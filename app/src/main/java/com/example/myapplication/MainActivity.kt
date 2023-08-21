@@ -1,7 +1,9 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.myapplication.HomeFragment
 import com.example.myapplication.R
@@ -16,9 +18,24 @@ class MainActivity : AppCompatActivity() {
     private val HomeFragment = HomeFragment()
     private val TalkFragment = TalkFragment()
 
+    private val Fragment_1 = 1
+    private val Fragment_2 = 2
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //버튼
+        findViewById<View>(R.id.lButton).setOnClickListener {
+            fragmentView(Fragment_1)
+        }
+
+        findViewById<View>(R.id.mButton).setOnClickListener {
+            fragmentView(Fragment_2)
+        }
+        fragmentView(Fragment_1)
+
+
 
         // 하단 탭이 눌렸을 때 화면을 전환하기 위해선 이벤트 처리하기 위해 BottomNavigationView 객체 생성
         var bnv_main = findViewById(R.id.bottomNavi) as BottomNavigationView
@@ -46,7 +63,29 @@ class MainActivity : AppCompatActivity() {
             selectedItemId = R.id.nav1
         }
     }
-    private fun switchFragment(fragment: Fragment) {
+
+    //버튼
+    private fun fragmentView(fragment: Int) {
+        // FragmentTransaction를 이용해 프래그먼트를 사용합니다.
+        val transaction = supportFragmentManager.beginTransaction()
+
+        when(fragment) {
+            1 -> {
+                val fragment1 = HomeFragment()
+                transaction.replace(R.id.main_layout, fragment1)
+                transaction.commit()
+            }
+            2 -> {
+                // 두번 째 프래그먼트 호출
+                val fragment2 = ListFragment()
+                transaction.replace(R.id.main_layout, fragment2)
+                transaction.commit()
+            }
+        }
+    }
+
+
+            private fun switchFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.main_layout, fragment)
         transaction.addToBackStack(null) // Optional: Add the fragment to the back stack
