@@ -10,5 +10,6 @@ class MainActivity : AppCompatActivity() {
 
         val x = 17
         val y = 19
+        val jebal = 11
     }
 }
