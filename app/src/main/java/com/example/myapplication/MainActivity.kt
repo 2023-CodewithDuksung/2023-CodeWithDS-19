@@ -53,10 +53,9 @@ class MainActivity : AppCompatActivity() {
                         val talkFragment = TalkFragment()
                         switchFragment(talkFragment)
                     }
-//                R.id.nav3 -> {
-//                    val settingFragment = SettingFragment()
-//                    supportFragmentManager.beginTransaction().replace(R.id.fl_container, settingFragment).commit()
-//                }
+        // OnNavigationItemSelectedListener를 통해 탭 아이템 선택 시 이벤트를 처리
+        // navi_menu.xml 에서 설정했던 각 아이템들의 id를 통해 알맞은 프래그먼트로 변경하게 한다.
+
                 }
                 true
             }
@@ -68,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //버튼
+    //버튼 클릭시 화면 전환
     private fun fragmentView(fragment: Int) {
         // FragmentTransaction를 이용해 프래그먼트를 사용합니다.
         val transaction = supportFragmentManager.beginTransaction()
@@ -85,6 +84,31 @@ class MainActivity : AppCompatActivity() {
                 transaction.replace(R.id.main_layout, fragment2)
                 transaction.commit()
             }
+        }
+    }
+
+    //탭2, 탭3에서 버튼 비활성화 및 숨기기
+    private fun hideButtons() {
+        findViewById<View>(R.id.lButton).apply {
+            visibility = View.GONE
+            isEnabled = false
+        }
+
+        findViewById<View>(R.id.mButton).apply {
+            visibility = View.GONE
+            isEnabled = false
+        }
+    }
+
+    private fun showButtons() {
+        findViewById<View>(R.id.lButton).apply {
+            visibility = View.VISIBLE
+            isEnabled = true
+        }
+
+        findViewById<View>(R.id.mButton).apply {
+            visibility = View.VISIBLE
+            isEnabled = true
         }
     }
 
