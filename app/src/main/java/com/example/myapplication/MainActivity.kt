@@ -48,10 +48,13 @@ class MainActivity : AppCompatActivity() {
                     // 다른 프래그먼트 화면으로 이동하는 기능
                     val homeFragment = HomeFragment()
                     switchFragment(homeFragment)
+                    showButtons()
                 }
                 R.id.nav2 -> {
                     val talkFragment = TalkFragment()
                     switchFragment(talkFragment)
+                    //버튼 숨기기
+                    hideButtons()
                 }
 //                R.id.nav3 -> {
 //                    val settingFragment = SettingFragment()
@@ -64,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //버튼
+    //버튼 클릭시 화면 전환
     private fun fragmentView(fragment: Int) {
         // FragmentTransaction를 이용해 프래그먼트를 사용합니다.
         val transaction = supportFragmentManager.beginTransaction()
@@ -83,6 +86,32 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    //탭2, 탭3에서 버튼 비활성화 및 숨기기
+    private fun hideButtons() {
+        findViewById<View>(R.id.lButton).apply {
+            visibility = View.GONE
+            isEnabled = false
+        }
+
+        findViewById<View>(R.id.mButton).apply {
+            visibility = View.GONE
+            isEnabled = false
+        }
+    }
+
+    private fun showButtons() {
+        findViewById<View>(R.id.lButton).apply {
+            visibility = View.VISIBLE
+            isEnabled = true
+        }
+
+        findViewById<View>(R.id.mButton).apply {
+            visibility = View.VISIBLE
+            isEnabled = true
+        }
+    }
+
 
     private fun switchFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
