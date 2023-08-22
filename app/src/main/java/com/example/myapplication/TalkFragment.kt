@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplication.databinding.FragmentTalkBinding
+import kotlin.collections.ArrayList
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +21,17 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class TalkFragment : Fragment() {
+
+    lateinit var binding: FragmentTalkBinding
+    lateinit var adapter: TalkAdapter
+
+    //lateinit var mAuth: FirebaseAuth
+    //lateinit var mDbRef: DatabaseReference
+
+    lateinit var talkList: ArrayList<Talk>
+
+
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -27,14 +42,29 @@ class TalkFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        binding = FragmentTalkBinding.inflate(layoutInflater)
+
+
+        talkList = ArrayList()
+        adapter = TalkAdapter(requireContext(), talkList)
+
+        binding.talkfragmentRecyclerview.layoutManager = LinearLayoutManager(requireContext())
+        binding.talkfragmentRecyclerview.adapter = adapter
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_talk, container, false)
+
+
     }
 
     companion object {
@@ -57,3 +87,7 @@ class TalkFragment : Fragment() {
             }
     }
 }
+
+
+
+

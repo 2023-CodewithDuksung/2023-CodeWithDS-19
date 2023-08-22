@@ -3,11 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/seonn/AndroidStudioProjects/2023-CodeWithDS-19/app/src/main/res/drawable/ic_launcher_background.xml" value="0.128" />
+        <entry key="..\:/Users/seonn/AndroidStudioProjects/2023-CodeWithDS-19/app/src/main/res/layout/activity_list.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/seonn/AndroidStudioProjects/2023-CodeWithDS-19/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/seonn/AndroidStudioProjects/2023-CodeWithDS-19/app/src/main/res/layout/fragment_home.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/seonn/AndroidStudioProjects/2023-CodeWithDS-19/app/src/main/res/layout/fragment_list.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/seonn/AndroidStudioProjects/2023-CodeWithDS-19/app/src/main/res/layout/fragment_talk.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/seonn/AndroidStudioProjects/2023-CodeWithDS-19/app/src/main/res/layout/item_chat.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/seonn/AndroidStudioProjects/2023-CodeWithDS-19/app/src/main/res/layout/list_recyclerview.xml" value="0.264" />
+        <entry key="..\:/Users/seonn/AndroidStudioProjects/2023-CodeWithDS-19/app/src/main/res/layout/list_talk.xml" value="0.4" />
+        <entry key="..\:/Users/seonn/AndroidStudioProjects/2023-CodeWithDS-19/app/src/main/res/layout/list_user_recyclerview.xml" value="0.21666666666666667" />
+        <entry key="..\:/Users/seonn/AndroidStudioProjects/2023-CodeWithDS-19/app/src/main/res/menu/bottom_navigation.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MyApplication4/app/src/main/res/layout/activity_main.xml" value="0.4" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
