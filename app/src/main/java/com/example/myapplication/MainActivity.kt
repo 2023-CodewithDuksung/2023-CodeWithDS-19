@@ -87,7 +87,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-<<<<<<<<< Temporary merge branch 1
     //탭2, 탭3에서 버튼 비활성화 및 숨기기
     private fun hideButtons() {
         findViewById<View>(R.id.lButton).apply {
@@ -114,10 +113,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-            private fun switchFragment(fragment: Fragment) {
-=========
     private fun switchFragment(fragment: Fragment) {
->>>>>>>>> Temporary merge branch 2
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.main_layout, fragment)
         transaction.addToBackStack(null) // Optional: Add the fragment to the back stack
