@@ -24,30 +24,35 @@ class MainActivity : AppCompatActivity() {
 
         // 하단 탭이 눌렸을 때 화면을 전환하기 위해선 이벤트 처리하기 위해 BottomNavigationView 객체 생성
         var bnv_main = findViewById(R.id.bottomNavi) as BottomNavigationView
+        if(MyApplication.checkAuth()) {
 
-        bnv_main.run { setOnItemSelectedListener {
-            when(it.itemId) {
-                R.id.nav1 -> {
-                    // 다른 프래그먼트 화면으로 이동하는 기능
-                    val homeFragment = HomeFragment()
-                    switchFragment(homeFragment)
-                }
-                R.id.nav2 -> {
-                    val talkFragment = TalkFragment()
-                    switchFragment(talkFragment)
-                }
+            bnv_main.run { setOnItemSelectedListener {
+                when(it.itemId) {
+                    R.id.nav1 -> {
+                        // 다른 프래그먼트 화면으로 이동하는 기능
+                        val homeFragment = HomeFragment()
+                        switchFragment(homeFragment)
+                    }
+                    R.id.nav2 -> {
+                        val talkFragment = TalkFragment()
+                        switchFragment(talkFragment)
+                    }
 //                R.id.nav3 -> {
 //                    val settingFragment = SettingFragment()
 //                    supportFragmentManager.beginTransaction().replace(R.id.fl_container, settingFragment).commit()
 //                }
+                }
+                true
             }
-            true
-        }
-            selectedItemId = R.id.nav1
+                selectedItemId = R.id.nav1
+            }
+        }else { // 로그인 안돼있으면 로그인 화면으로 이동
+            val intent = Intent(this, AuthActivity::class.java)
+            startActivity(intent)
         }
 
-//        val intent = Intent(this, AuthActivity::class.java)
-//        startActivity(intent)
+
+
 
     }
     private fun switchFragment(fragment: Fragment) {

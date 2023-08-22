@@ -39,15 +39,15 @@
             android:visibility="gone" />
 
 
-        <Button
-            android:id="@+id/googleLoginBtn"
+<!--        <Button-->
+<!--            android:id="@+id/googleLoginBtn"-->
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="구글인증"
-            android:textStyle="bold"
-            android:visibility="gone" />
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:text="구글인증"-->
+<!--            android:textStyle="bold"-->
+<!--            android:visibility="gone" />-->
 
         <EditText
             android:id="@+id/authEmailEditView"
