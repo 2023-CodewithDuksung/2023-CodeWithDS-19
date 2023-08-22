@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-            private fun switchFragment(fragment: Fragment) {
+    private fun switchFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.main_layout, fragment)
         transaction.addToBackStack(null) // Optional: Add the fragment to the back stack
