@@ -41,4 +41,10 @@ class HomeFragment : Fragment() {
         // Return the root view of the binding
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // onViewCreated 내용 추가
+    }
 }

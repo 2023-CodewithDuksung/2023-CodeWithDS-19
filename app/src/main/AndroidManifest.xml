@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:name=".MyApplication">
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="3v9rrrgqtn" />
         <activity
             android:name=".SplashActivity"
             android:exported="true"
