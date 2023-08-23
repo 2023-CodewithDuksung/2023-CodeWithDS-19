@@ -4,14 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity">
+    tools:context=".MapActivity">
 
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="65dp"
-        android:layout_height="54dp"
-        app:srcCompat="@drawable/ds_university"
-        tools:layout_editor_absoluteX="173dp"
-        tools:layout_editor_absoluteY="321dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

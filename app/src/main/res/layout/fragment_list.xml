@@ -7,10 +7,10 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/NoticListRecyclerView"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="200px"
-        android:text="test"></TextView>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

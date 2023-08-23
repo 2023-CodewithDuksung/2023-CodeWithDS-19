@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             }
             2 -> {
                 // 두번 째 프래그먼트 호출
-                val fragment2 = ListFragment()
+                val fragment2 = TalkFragment()
                 transaction.replace(R.id.main_layout, fragment2)
                 transaction.commit()
             }
