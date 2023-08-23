@@ -13,7 +13,7 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private lateinit var bottomNavigationView: BottomNavigationView
 
     private val HomeFragment = HomeFragment()
@@ -29,15 +29,14 @@ class MainActivity : AppCompatActivity() {
 
 
         //버튼
-        findViewById<View>(R.id.lButton).setOnClickListener {
+        binding.lButton.setOnClickListener {
             switchFragment(ListFragment())
         }
 
-        findViewById<View>(R.id.mButton).setOnClickListener {
-            fragmentView(Fragment_1)
+        binding.mButton.setOnClickListener {
+            switchFragment(HomeFragment)
         }
         fragmentView(Fragment_1)
-
 
 
 
@@ -51,8 +50,12 @@ class MainActivity : AppCompatActivity() {
                         // 다른 프래그먼트 화면으로 이동하는 기능
                         val homeFragment = HomeFragment()
                         switchFragment(homeFragment)
+                        showButtons()
                     }
                     R.id.nav2 -> {
+//                        val talkFragment = TalkFragment()
+//                        switchFragment(talkFragment)
+                        hideButtons()
 //                        val talkFragment = TalkFragment()
 //                        switchFragment(talkFragment)
                         val intent = Intent(baseContext, FormActivity::class.java)
@@ -67,9 +70,11 @@ class MainActivity : AppCompatActivity() {
         // navi_menu.xml 에서 설정했던 각 아이템들의 id를 통해 알맞은 프래그먼트로 변경하게 한다.
 
                 }
+
                 true
             }
                 selectedItemId = R.id.nav1
+                showButtons()
             }
         }else { // 로그인 안돼있으면 로그인 화면으로 이동
             val intent = Intent(this, AuthActivity::class.java)
@@ -95,6 +100,7 @@ class MainActivity : AppCompatActivity() {
                 transaction.commit()
             }
         }
+        showButtons()
     }
 
     //탭2, 탭3에서 버튼 비활성화 및 숨기기
