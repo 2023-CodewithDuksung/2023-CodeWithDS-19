@@ -10,6 +10,7 @@ data class NoticeModel(
     val recruitment: Int? = 0,
     val recruited: Int? = 0,
     val host : String? = null,
+    val taxiOrWalk : Int? = 0,
 //    val appliedMembers: MutableSet<String> = mutableSetOf() // 신청한 멤버들 목록
     val user1 : String? = null,
     val user2 : String? = null,

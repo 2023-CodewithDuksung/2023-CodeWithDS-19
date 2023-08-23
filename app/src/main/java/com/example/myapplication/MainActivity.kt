@@ -13,7 +13,7 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     private lateinit var bottomNavigationView: BottomNavigationView
 
     private val HomeFragment = HomeFragment()
@@ -23,18 +23,20 @@ class MainActivity : AppCompatActivity() {
     private val Fragment_2 = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
         //버튼
         findViewById<View>(R.id.lButton).setOnClickListener {
-            fragmentView(Fragment_1)
+            switchFragment(ListFragment())
         }
 
         findViewById<View>(R.id.mButton).setOnClickListener {
-            fragmentView(Fragment_2)
+            fragmentView(Fragment_1)
         }
         fragmentView(Fragment_1)
+
 
 
 

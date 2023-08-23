@@ -2,10 +2,11 @@ package com.example.myapplication
 
 import androidx.multidex.MultiDexApplication
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MyApplication : MultiDexApplication() {
     companion object {
-//        lateinit var db: FirebaseFirestore
+        lateinit var db: FirebaseFirestore
         lateinit var auth: FirebaseAuth
         var email: String? = null
 
@@ -23,7 +24,7 @@ class MyApplication : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
-//        db = FirebaseFirestore.getInstance()
+        db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
     }
 }
