@@ -79,6 +79,15 @@
             android:textSize="18sp"
             android:visibility="invisible" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:layout_margin="25dp"
+            android:elevation="6dp"
+            app:srcCompat="@drawable/next"
+            app:fabSize="normal" />
     </FrameLayout>
 
 
