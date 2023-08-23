@@ -29,6 +29,9 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     private lateinit var locationSource: FusedLocationSource // 위치를 반환하는 구현체
     private lateinit var naverMap: NaverMap
 
+    //
+    //private val marker
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

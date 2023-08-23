@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.TimePicker
 import android.widget.Toast
 import com.example.myapplication.MyApplication.Companion.auth
 import com.example.myapplication.databinding.ActivityFormBinding
@@ -56,15 +57,15 @@ class FormActivity : AppCompatActivity() {
         lateinit var bottomSheetView: View // View 타입으로 명시
         when (str) {
             "departure" -> {
-                // "departure" 문자열과 비교하여 원하는 동작을 수행합니다.
-                // 예: 출발 장소 선택 바텀 시트를 띄우는 등의 동작
+
                 bottomSheetView = layoutInflater.inflate(R.layout.list_departure, null)
                 val departureButtons = listOf(
                     bottomSheetView.findViewById<Button>(R.id.btnDeparture1),
                     bottomSheetView.findViewById<Button>(R.id.btnDeparture2),
                     bottomSheetView.findViewById<Button>(R.id.btnDeparture3),
                     bottomSheetView.findViewById<Button>(R.id.btnDeparture4),
-                    bottomSheetView.findViewById<Button>(R.id.btnDeparture5)
+                    bottomSheetView.findViewById<Button>(R.id.btnDeparture5),
+                    bottomSheetView.findViewById<Button>(R.id.btnDeparture6)
                 )
                 val listener = View.OnClickListener { view ->
                     val selectedValue = (view as Button).text.toString()
@@ -76,20 +77,55 @@ class FormActivity : AppCompatActivity() {
                     button.setOnClickListener(listener)
                 }
 
-                val departureButton = bottomSheetView.findViewById<Button>(R.id.btnDeparture1)
-                departureButton.setOnClickListener {
-                    val selectedValue = departureButton.text.toString()
-                    binding.textViewDeparture.text = selectedValue
-                }
             }
             "destination" -> {
                 bottomSheetView = layoutInflater.inflate(R.layout.list_destination, null)
+
+                val destinationButtons = listOf(
+                    bottomSheetView.findViewById<Button>(R.id.btnDestination1),
+                    bottomSheetView.findViewById<Button>(R.id.btnDestination2),
+                    bottomSheetView.findViewById<Button>(R.id.btnDestination3),
+                    bottomSheetView.findViewById<Button>(R.id.btnDestination4),
+                    bottomSheetView.findViewById<Button>(R.id.btnDestination5),
+                    bottomSheetView.findViewById<Button>(R.id.btnDestination6)
+                )
+                val listener = View.OnClickListener { view ->
+                    val selectedValue = (view as Button).text.toString()
+                    binding.textViewDestination.text = selectedValue
+                    bottomSheetDialog.dismiss() // 선택 후 바텀 시트 닫기
+                }
+
+                destinationButtons.forEach { button ->
+                    button.setOnClickListener(listener)
+                }
+
             }
             "reqruitment" -> {
                 bottomSheetView = layoutInflater.inflate(R.layout.list_recruitment, null)
+                val reqruitmentButtons = listOf(
+                    bottomSheetView.findViewById<Button>(R.id.btnRecruitment1),
+                    bottomSheetView.findViewById<Button>(R.id.btnRecruitment2),
+                    bottomSheetView.findViewById<Button>(R.id.btnRecruitment3),
+                    bottomSheetView.findViewById<Button>(R.id.btnRecruitment4),
+                )
+                val listener = View.OnClickListener { view ->
+                    val selectedValue = (view as Button).text.toString()
+                    binding.textViewRecruitment.text = selectedValue
+                    bottomSheetDialog.dismiss() // 선택 후 바텀 시트 닫기
+                }
+
+                reqruitmentButtons.forEach { button ->
+                    button.setOnClickListener(listener)
+                }
             }
             "meetingTime" -> {
                 bottomSheetView = layoutInflater.inflate(R.layout.list_meeting_time, null)
+                val timePicker = bottomSheetView.findViewById<TimePicker>(R.id.timePicker)
+                timePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
+                    val selectedTime = String.format("%02d:%02d", hourOfDay, minute)
+                    binding.textViewMeetingTime.text = selectedTime
+                    Toast.makeText(baseContext, "${selectedTime}", Toast.LENGTH_SHORT).show()
+                }
             }
 
             else -> {

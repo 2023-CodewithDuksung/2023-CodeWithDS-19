@@ -18,22 +18,22 @@
         android:id="@+id/btnRecruitment1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="list1" />
+        android:text="1" />
     <Button
         android:id="@+id/btnRecruitment2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="list2" />
+        android:text="2" />
     <Button
         android:id="@+id/btnRecruitment3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="list3" />
+        android:text="3" />
     <Button
         android:id="@+id/btnRecruitment4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="list4" />
+        android:text="4" />
 
 
     <!-- 추가적인 위젯들이나 레이아웃을 필요에 따라 추가합니다. -->
