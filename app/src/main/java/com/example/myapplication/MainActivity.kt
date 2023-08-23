@@ -28,12 +28,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //버튼
-        findViewById<View>(R.id.lButton).setOnClickListener {
+        binding.lButton.setOnClickListener {
             switchFragment(ListFragment())
         }
 
-        findViewById<View>(R.id.mButton).setOnClickListener {
-            fragmentView(Fragment_1)
+        binding.mButton.setOnClickListener {
+            switchFragment(HomeFragment)
         }
         fragmentView(Fragment_1)
 

@@ -45,17 +45,16 @@ class ListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_list, container, false)
-
+        binding = FragmentListBinding.inflate(inflater, container, false)
         //플로팅버튼
-        val floatingActionButton = rootView.findViewById<FloatingActionButton>(R.id.pButton)
-        floatingActionButton.setOnClickListener {
-            //Toast.makeText(getActivity(),"Toast Message",Toast.LENGTH_SHORT).show();
+
+        binding.pButton.setOnClickListener {
             val intent = Intent(requireContext(), PostActivity::class.java)
             startActivity(intent)
         }
-        return rootView
-    }
 
+        return binding.root
+    }
 
     companion object {
         /**

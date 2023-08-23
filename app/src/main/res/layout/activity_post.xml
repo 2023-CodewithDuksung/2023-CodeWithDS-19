@@ -1,15 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostActivity">
+    android:orientation="vertical"
+    >
 
-    <TextView
+
+
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="testtest"
-        android:textSize="80dp"/>
+        android:layout_gravity="center">
 
-</FrameLayout>
+
+        <TextView
+            android:id="@+id/choiceText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200sp"
+            android:layout_marginBottom="50sp"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="택시와 도보 중 선택해주세요!" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/imgTexi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40sp"
+                android:src="@drawable/test" />
+            <ImageView
+                android:id="@+id/imgWalk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/test" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/selectText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="500sp"
+            android:layout_marginBottom="50sp"
+            android:gravity="center|bottom"
+            android:text="택시의 경우 모집 인원은 4명으로 제한됩니다."
+            android:visibility="invisible"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="530sp"
+            android:layout_marginBottom="50sp"
+            android:gravity="center|bottom"
+            android:visibility="invisible"
+            android:text="다음으로 넘어가 \n 출발지, 도착지, 모일시간을 설정해주세요."
+            android:textSize="18sp"/>
+
+    </FrameLayout>
+
+
+</LinearLayout>
