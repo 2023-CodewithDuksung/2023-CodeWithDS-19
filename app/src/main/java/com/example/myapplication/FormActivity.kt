@@ -28,6 +28,10 @@ class FormActivity : AppCompatActivity() {
         setContentView(binding.root)
         // 택시 or 도보 intent로 데이터 받아와야함
         //val taxiOrWalk : Int = intent.getStringExtra()
+
+        val taxiOrWalk = intent.getStringExtra("taxiOrWalk")
+        binding.textViewTaxiOrWalk.text = taxiOrWalk
+
         binding.saveBtn.setOnClickListener {
             if(MyApplication.checkAuth()){ // 예외처리
                 saveStore()

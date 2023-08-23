@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,12 +13,14 @@ class PostActivity : AppCompatActivity() {
         binding = ActivityPostBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        var taxiOrWalk :String? = null
 
         binding.imgTexi.setOnClickListener{
             binding.choiceText.text = "택시를 선택하셨습니다!"
             binding.selectTexi.visibility = View.VISIBLE
             binding.selectWalk.visibility = View.INVISIBLE
             binding.descriptionText.visibility = View.VISIBLE
+            taxiOrWalk = "taxi"
 
         }
         binding.imgWalk.setOnClickListener{
@@ -25,6 +28,13 @@ class PostActivity : AppCompatActivity() {
             binding.selectWalk.visibility = View.VISIBLE
             binding.selectTexi.visibility = View.INVISIBLE
             binding.descriptionText.visibility = View.VISIBLE
+            taxiOrWalk = "walk"
+
+        }
+        binding.nextButton.setOnClickListener {
+            val intent = Intent(baseContext, FormActivity::class.java)
+            intent.putExtra("taxiOrWalk", taxiOrWalk)
+            startActivity(intent)
 
         }
 
