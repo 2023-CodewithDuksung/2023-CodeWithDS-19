@@ -16,7 +16,7 @@ import com.example.myapplication.databinding.NoticeItemBinding
 
 class MyFeedViewHolder(val binding: NoticeItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-class ListRecyclerViewAdapter (val context: Context, val itemList: MutableList<NoticeModel>, val sourceFragment: String): RecyclerView.Adapter<MyFeedViewHolder>() {
+class ListRecyclerViewAdapter (val context: Context, val itemList: MutableList<NoticeModel>): RecyclerView.Adapter<MyFeedViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyFeedViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

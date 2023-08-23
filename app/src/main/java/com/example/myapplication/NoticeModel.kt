@@ -1,15 +1,19 @@
 package com.example.myapplication
 
 data class NoticeModel(
-    val title: String,
-    val departure: String,
-    val destination: String,
-    val time: String,
-    val deadline: String,
-    val recruitment: Int,
-    val recruited: Int,
-    val host : String,
-    val appliedMembers: MutableSet<String> = mutableSetOf() // 신청한 멤버들 목록
+    var docId: String? = null,
+    val title: String? = null,
+    val departure: String? = null,
+    val destination: String? = null,
+    val time: String? = null,
+    val deadline: String? = null,
+    val recruitment: Int? = 0,
+    val recruited: Int? = 0,
+    val host : String? = null,
+//    val appliedMembers: MutableSet<String> = mutableSetOf() // 신청한 멤버들 목록
+    val user1 : String? = null,
+    val user2 : String? = null,
+    val user3 : String? = null,
 )
 
 
