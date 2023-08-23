@@ -15,7 +15,15 @@ class PostActivity : AppCompatActivity() {
 
         binding.imgTexi.setOnClickListener{
             binding.choiceText.text = "택시를 선택하셨습니다!"
-            binding.selectText.visibility = View.VISIBLE
+            binding.selectTexi.visibility = View.VISIBLE
+            binding.selectWalk.visibility = View.INVISIBLE
+            binding.descriptionText.visibility = View.VISIBLE
+
+        }
+        binding.imgWalk.setOnClickListener{
+            binding.choiceText.text = "도보를 선택하셨습니다!"
+            binding.selectWalk.visibility = View.VISIBLE
+            binding.selectTexi.visibility = View.INVISIBLE
             binding.descriptionText.visibility = View.VISIBLE
 
         }
