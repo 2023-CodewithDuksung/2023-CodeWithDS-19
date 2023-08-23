@@ -53,6 +53,11 @@ class MainActivity : AppCompatActivity() {
                         val talkFragment = TalkFragment()
                         switchFragment(talkFragment)
                     }
+
+                    R.id.nav3 -> {
+                        val userFragment = UserFragment()
+                        switchFragment(userFragment)
+                    }
         // OnNavigationItemSelectedListener를 통해 탭 아이템 선택 시 이벤트를 처리
         // navi_menu.xml 에서 설정했던 각 아이템들의 id를 통해 알맞은 프래그먼트로 변경하게 한다.
 
