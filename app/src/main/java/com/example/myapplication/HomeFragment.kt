@@ -89,23 +89,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         return rootView
     }
 
-    /*
-    * override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_home, container, false)
 
-        mapView = rootView.findViewById(R.id.map)
-        mapView.onCreate(savedInstanceState)
-        mapView.getMapAsync(this)
-
-        locationSource = FusedLocationSource(requireActivity(), LOCATION_PERMISSTION_REQUEST_CODE)
-
-        return rootView
-    }
-    * */
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -146,19 +130,37 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     }
 
 
-    private fun showBottomSheet(title: String) {
-//        val bottomSheetDialog = BottomSheetDialog(requireContext())
-//        val bottomSheetView = layoutInflater.inflate(R.layout.list_departure, null)
-//
-//        // 리사이클러뷰 초기화 및 어댑터 설정
-//        val recyclerView = bottomSheetView.findViewById<RecyclerView>(R.id.bottomRecyclerView)
-//        val adapter = YourRecyclerViewAdapter() // 여기에 실제 어댑터를 생성해주세요
-//        recyclerView.adapter = adapter
-//        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-//
-//        bottomSheetDialog.setContentView(bottomSheetView)
-//        bottomSheetDialog.show()
+    private fun showBottomSheet(departure: String) {
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        val bottomSheetView = layoutInflater.inflate(R.layout.list_home_bottom_list, null)
+
+        // 리사이클러뷰 초기화 및 어댑터 설정
+        val recyclerView = bottomSheetView.findViewById<RecyclerView>(R.id.bottomRecyclerView)
+        MyApplication.db.collection("notices")
+            //.orderBy("date", Query.Direction.DESCENDING)
+            .whereEqualTo("departure", departure)
+            .get()
+            .addOnSuccessListener { result ->
+                val itemList = mutableListOf<NoticeModel>()
+                for(document in result){
+                    val item = document.toObject(NoticeModel::class.java)
+                    item.docId = document.id
+                    itemList.add(item)
+                }
+                recyclerView.layoutManager = LinearLayoutManager(requireContext())
+                recyclerView.adapter = ListRecyclerViewAdapter(requireContext(), itemList)
+                Log.d("ToyProject", "${itemList}")
+
+
+            }
+            .addOnFailureListener{
+                Toast.makeText(requireContext(), "데이터 획득 실패", Toast.LENGTH_SHORT).show()
+            }
+
+        bottomSheetDialog.setContentView(bottomSheetView)
+        bottomSheetDialog.show()
     }
+
 
 
 
