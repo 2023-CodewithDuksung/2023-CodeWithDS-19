@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity() {
 
         //버튼
         findViewById<View>(R.id.lButton).setOnClickListener {
-            fragmentView(Fragment_1)
+            switchFragment(ListFragment())
         }
 
         findViewById<View>(R.id.mButton).setOnClickListener {
-            fragmentView(Fragment_2)
+            fragmentView(Fragment_1)
         }
         fragmentView(Fragment_1)
 
@@ -48,18 +48,22 @@ class MainActivity : AppCompatActivity() {
                         // 다른 프래그먼트 화면으로 이동하는 기능
                         val homeFragment = HomeFragment()
                         switchFragment(homeFragment)
+                        showButtons()
                     }
                     R.id.nav2 -> {
                         val talkFragment = TalkFragment()
                         switchFragment(talkFragment)
+                        hideButtons()
                     }
         // OnNavigationItemSelectedListener를 통해 탭 아이템 선택 시 이벤트를 처리
         // navi_menu.xml 에서 설정했던 각 아이템들의 id를 통해 알맞은 프래그먼트로 변경하게 한다.
 
                 }
+
                 true
             }
                 selectedItemId = R.id.nav1
+                showButtons()
             }
         }else { // 로그인 안돼있으면 로그인 화면으로 이동
             val intent = Intent(this, AuthActivity::class.java)
@@ -85,6 +89,7 @@ class MainActivity : AppCompatActivity() {
                 transaction.commit()
             }
         }
+        showButtons()
     }
 
     //탭2, 탭3에서 버튼 비활성화 및 숨기기
