@@ -11,12 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="?attr/actionBarSize">
-
         <Button
             android:id="@+id/mButton"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:visibility="visible"
             android:text="맵" />
 
         <Button
@@ -24,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:visibility="visible"
             android:text="리스트" />
     </FrameLayout>
 
