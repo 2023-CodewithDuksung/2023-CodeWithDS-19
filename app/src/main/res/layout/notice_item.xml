@@ -92,5 +92,10 @@
             android:layout_weight="1"/>
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical"
+        android:background="#40000000" />
 
 </LinearLayout>

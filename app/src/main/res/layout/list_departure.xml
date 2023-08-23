@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="출발 장소 선택"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <!-- 버튼을 눌렀을 때 처리할 내용 추가 -->
+    <Button
+        android:id="@+id/btnDeparture1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="list1" />
+    <Button
+        android:id="@+id/btnDeparture2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="list2" />
+    <Button
+        android:id="@+id/btnDeparture3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="list3" />
+    <Button
+        android:id="@+id/btnDeparture4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="list4" />
+    <Button
+        android:id="@+id/btnDeparture5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="list5" />
+
+    <!-- 추가적인 위젯들이나 레이아웃을 필요에 따라 추가합니다. -->
+    <!-- 예: 라디오 버튼, 리스트뷰, 기타 입력 필드 등 -->
+</LinearLayout>

@@ -35,8 +35,8 @@ class ListRecyclerViewAdapter (val context: Context, val itemList: MutableList<N
             textViewTitle.text = data.title
             textViewDeparture.text=data.departure
             textViewDestination.text=data.destination
-            textViewTime.text = data.time
-            textViewDeadline.text=data.deadline
+            textViewTime.text = data.currentDay
+            textViewDeadline.text=data.meetingTime
             textViewRecruited.text=data.recruited.toString()
             textViewRecruitment.text=data.recruitment.toString()
 

@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+
         //버튼
         findViewById<View>(R.id.lButton).setOnClickListener {
             switchFragment(ListFragment())
@@ -52,8 +53,10 @@ class MainActivity : AppCompatActivity() {
                         switchFragment(homeFragment)
                     }
                     R.id.nav2 -> {
-                        val talkFragment = TalkFragment()
-                        switchFragment(talkFragment)
+//                        val talkFragment = TalkFragment()
+//                        switchFragment(talkFragment)
+                        val intent = Intent(baseContext, FormActivity::class.java)
+                        startActivity(intent)
                     }
 
                     R.id.nav3 -> {
