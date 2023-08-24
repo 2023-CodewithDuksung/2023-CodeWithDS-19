@@ -47,13 +47,12 @@ class ListFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_list, container, false)
         binding = FragmentListBinding.inflate(inflater, container, false)
-        //플로팅버튼
 
+        //플로팅버튼
         binding.pButton.setOnClickListener {
             val intent = Intent(requireContext(), PostActivity::class.java)
             startActivity(intent)
         }
-
         return binding.root
     }
 
@@ -72,11 +71,17 @@ class ListFragment : Fragment() {
                         item.docId = document.id
                         itemList.add(item)
                     }
+                    val adapter = ListRecyclerViewAdapter(requireContext(), itemList)
                     binding.noticListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-                    binding.noticListRecyclerView.adapter = ListRecyclerViewAdapter(requireContext(), itemList)
+                    binding.noticListRecyclerView.adapter = adapter
                     Log.d("ToyProject", "${itemList}")
 
-
+                    //recyclerview 아이템 클릭 이벤트 처리
+                    adapter.setOnItemClickListener(object: ListRecyclerViewAdapter.OnItemClickListener {
+                        override fun onItemClick(v: View, position: Int) {
+                            Log.d("ToyProject", "${itemList[position].docId} 클릭")
+                        }
+                    })
                 }
                 .addOnFailureListener{
                     Toast.makeText(requireContext(), "데이터 획득 실패", Toast.LENGTH_SHORT).show()

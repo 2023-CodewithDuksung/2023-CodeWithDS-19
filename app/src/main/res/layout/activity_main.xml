@@ -6,26 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:contentPaddingLeft="10dp"
+            app:contentPaddingRight="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@color/white">
+            <LinearLayout
+                android:id="@+id/search_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/menu_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="5dp"
+                    android:visibility="visible"
+                    android:src="@drawable/menu_burger" />
+                <!-- flaticon https://www.flaticon.com/free-icon-font/menu-burger_3917220?term=menu&related_id=3917220 -->
+                <android.widget.SearchView
+                    android:id="@+id/searchview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:queryHint="hint"
+                    android:iconifiedByDefault="false"
+                    android:searchIcon="@null"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.appcompat.widget.Toolbar>
+
     <FrameLayout
         android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="?attr/actionBarSize">
-        <Button
-            android:id="@+id/mButton"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/button_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:visibility="visible"
-            android:text="맵" />
+            android:layout_gravity="bottom|center">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/mButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:text="맵" />
 
-        <Button
-            android:id="@+id/lButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:visibility="visible"
-            android:text="리스트" />
+                <Button
+                    android:id="@+id/lButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:text="리스트" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

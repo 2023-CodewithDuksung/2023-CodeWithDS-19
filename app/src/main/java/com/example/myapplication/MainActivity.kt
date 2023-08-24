@@ -3,7 +3,9 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
+import android.widget.SearchView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import com.example.myapplication.HomeFragment
@@ -23,10 +25,13 @@ class MainActivity : AppCompatActivity() {
     private val Fragment_2 = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //toolbar
+        setSupportActionBar(binding.toolbar)
 
         //버튼
         binding.lButton.setOnClickListener {
@@ -80,6 +85,21 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    //searchView 연결
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val searchView = binding.searchview
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return true
+            }
+        })
+        return super.onCreateOptionsMenu(menu)
     }
 
     //버튼 클릭시 화면 전환
@@ -138,8 +158,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
-
     }
 
 //    private fun switchFragment(fragment: Fragment) {

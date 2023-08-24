@@ -14,24 +14,42 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.NoticeItemBinding
 
-class MyFeedViewHolder(val binding: NoticeItemBinding) : RecyclerView.ViewHolder(binding.root)
+class ListRecyclerViewAdapter (val context: Context, val itemList: MutableList<NoticeModel>): RecyclerView.Adapter<ListRecyclerViewAdapter.MyFeedViewHolder>() {
 
-class ListRecyclerViewAdapter (val context: Context, val itemList: MutableList<NoticeModel>): RecyclerView.Adapter<MyFeedViewHolder>() {
+    //커스텀 리스너 인터페이스
+    interface OnItemClickListener {
+        fun onItemClick(v: View, position: Int)
+    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyFeedViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        return MyFeedViewHolder(NoticeItemBinding.inflate(layoutInflater))
+    //리스너 객체 참조 저장
+    var mListener: OnItemClickListener? = null
+
+    //리스너 객체 참조를 어댑터에 전달
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        mListener = listener
+    }
+
+    inner class MyFeedViewHolder(val binding: NoticeItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        init {
+            itemView.setOnClickListener {
+                val pos = adapterPosition
+                if (pos != RecyclerView.NO_POSITION && mListener != null) {
+                    mListener?.onItemClick(it, pos)
+                }
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return itemList.size
     }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyFeedViewHolder
+            = MyFeedViewHolder(NoticeItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: MyFeedViewHolder, position : Int) {
         val data = itemList.get(position)
 
         holder.binding.run {
-
             textViewTitle.text = data.title
             textViewDeparture.text=data.departure
             textViewDestination.text=data.destination
