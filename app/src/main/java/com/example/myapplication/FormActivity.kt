@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -166,7 +167,7 @@ class FormActivity : AppCompatActivity() {
             .add(data)
             .addOnSuccessListener {
                 Log.d("ToyProject", "data firestore save ok")
-//                uploadImage(it.id)
+//              uploadImage(it.id)
             }
             .addOnFailureListener {
                 Log.d("ToyProject", "data firestore save error")

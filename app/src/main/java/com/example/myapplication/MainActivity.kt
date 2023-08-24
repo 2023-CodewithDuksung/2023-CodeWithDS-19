@@ -30,9 +30,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //toolbar
-        setSupportActionBar(binding.toolbar)
-
         //버튼
         binding.lButton.setOnClickListener {
             switchFragment(ListFragment())
@@ -58,13 +55,9 @@ class MainActivity : AppCompatActivity() {
                         showButtons()
                     }
                     R.id.nav2 -> {
-//                        val talkFragment = TalkFragment()
-//                        switchFragment(talkFragment)
+                        val talkFragment = TalkFragment()
+                        switchFragment(talkFragment)
                         hideButtons()
-//                        val talkFragment = TalkFragment()
-//                        switchFragment(talkFragment)
-                        val intent = Intent(baseContext, FormActivity::class.java)
-                        startActivity(intent)
                     }
 
                     R.id.nav3 -> {
@@ -85,21 +78,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)
         }
-    }
-
-    //searchView 연결
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val searchView = binding.searchview
-        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(p0: String?): Boolean {
-                return true
-            }
-
-            override fun onQueryTextChange(p0: String?): Boolean {
-                return true
-            }
-        })
-        return super.onCreateOptionsMenu(menu)
     }
 
     //버튼 클릭시 화면 전환

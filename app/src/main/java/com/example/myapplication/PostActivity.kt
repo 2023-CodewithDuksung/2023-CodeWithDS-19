@@ -35,7 +35,6 @@ class PostActivity : AppCompatActivity() {
             val intent = Intent(baseContext, FormActivity::class.java)
             intent.putExtra("taxiOrWalk", taxiOrWalk)
             startActivity(intent)
-
         }
 
     }
