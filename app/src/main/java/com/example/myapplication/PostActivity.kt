@@ -18,6 +18,8 @@ class PostActivity : AppCompatActivity() {
         binding.imgTexi.setOnClickListener{
             binding.choiceText.text = "택시를 선택하셨습니다!"
             binding.selectTexi.visibility = View.VISIBLE
+            binding.imgTexi.setImageResource(R.drawable.select_texi)
+            binding.imgWalk.setImageResource(R.drawable.by_walk)
             binding.selectWalk.visibility = View.INVISIBLE
             binding.descriptionText.visibility = View.VISIBLE
             taxiOrWalk = "taxi"
@@ -26,6 +28,8 @@ class PostActivity : AppCompatActivity() {
         binding.imgWalk.setOnClickListener{
             binding.choiceText.text = "도보를 선택하셨습니다!"
             binding.selectWalk.visibility = View.VISIBLE
+            binding.imgWalk.setImageResource(R.drawable.select_walk)
+            binding.imgTexi.setImageResource(R.drawable.by_texi)
             binding.selectTexi.visibility = View.INVISIBLE
             binding.descriptionText.visibility = View.VISIBLE
             taxiOrWalk = "walk"
