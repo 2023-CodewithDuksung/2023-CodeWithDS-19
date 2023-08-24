@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.TimePicker
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.example.myapplication.MyApplication.Companion.auth
 import com.example.myapplication.databinding.ActivityFormBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -32,16 +36,20 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
     private val LOCATION_PERMISSTION_REQUEST_CODE: Int = 1000
     private lateinit var locationSource: FusedLocationSource // 위치를 반환하는 구현체
 
+    //지도 마커
+    private  var departureLocation : String =""
+    private  var destinationLocation : String =""
+
     val markerList = arrayOf(
         listOf("덕성여대 정문", 37.652933, 127.016745),
         listOf("덕성여대 후문", 37.652135, 127.018054),
         listOf("가오리역", 37.641224, 127.016088),
-        listOf("4.19역", 37.649595, 127.017725),
+        listOf("4.19민주묘지역", 37.649593, 127.013746),
         listOf("수유역", 37.637105, 127.024856),
         listOf("쌍문역", 37.648087, 127.034662),
         //
         listOf("덕성여대 기숙사", 37.651852, 127.017337),
-        listOf("솔밭공원", 37.656088, 127.013252),
+        listOf("솔밭공원역", 37.656088, 127.013252),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,12 +61,6 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(binding.root)
         // 택시 or 도보 intent로 데이터 받아와야함
         //val taxiOrWalk : Int = intent.getStringExtra()
-
-        //toolbar
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = ""
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
 
         locationSource = FusedLocationSource(this, LOCATION_PERMISSTION_REQUEST_CODE)
 
@@ -75,6 +77,8 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.saveBtn.setOnClickListener {
             if(MyApplication.checkAuth()){ // 예외처리
                 saveStore()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             } else {
                 Toast.makeText(this, "제목을 입력해주세요..", Toast.LENGTH_SHORT).show()
             }
@@ -82,9 +86,11 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         binding.textViewDeparture.setOnClickListener {
             showBottomSheet("departure")
+            setMarker()
         }
         binding.textViewDestination.setOnClickListener {
             showBottomSheet("destination")
+            setMarker()
         }
 
         binding.textViewMeetingTime.setOnClickListener {
@@ -101,21 +107,46 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
         naverMap.locationSource = locationSource
         naverMap.locationTrackingMode = LocationTrackingMode.Follow
 
-        setMarker()
+//        setMarker()
+
     }
 
     fun setMarker() {
-
-        for (markerInfo in markerList) {
-            val marker = Marker()
-            val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
-            marker.position = position
-            marker.map = naverMap
-            marker.captionText = markerInfo[0] as String
+        // 이전에 표시한 마커들 삭제
 
 
+        // 선택한 출발지 마커 표시
+        if (departureLocation != "") {
+            for (markerInfo in markerList) {
+                if (markerInfo[0].equals(departureLocation)) {
+                    val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
+                    val departureMarker = Marker()
+                    departureMarker.position = position
+                    departureMarker.iconTintColor = ContextCompat.getColor(this, R.color.myYellow)
+                    departureMarker.map = naverMap
+                    departureMarker.captionText = markerInfo[0] as String
+                    break // 선택한 출발지 마커만 표시하고 루프 종료
+                }
+            }
+        }
+
+        // 선택한 목적지 마커 표시
+        if (destinationLocation != "") {
+            for (markerInfo in markerList) {
+                if (markerInfo[0].equals(destinationLocation)) {
+                    val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
+                    val destinationMarker = Marker()
+                    destinationMarker.position = position
+                    destinationMarker.iconTintColor = ContextCompat.getColor(this, R.color.myBurgundy03)
+                    destinationMarker.map = naverMap
+                    destinationMarker.captionText = markerInfo[0] as String
+                    break // 선택한 목적지 마커만 표시하고 루프 종료
+                }
+            }
         }
     }
+
+
 
     private fun showBottomSheet(str : String) {
         val bottomSheetDialog = BottomSheetDialog(this)
@@ -137,7 +168,9 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
                 val listener = View.OnClickListener { view ->
                     val selectedValue = (view as Button).text.toString()
                     binding.textViewDeparture.text = selectedValue
+                    departureLocation = selectedValue
                     bottomSheetDialog.dismiss() // 선택 후 바텀 시트 닫기
+
                 }
 
                 departureButtons.forEach { button ->
@@ -161,7 +194,9 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
                 val listener = View.OnClickListener { view ->
                     val selectedValue = (view as Button).text.toString()
                     binding.textViewDestination.text = selectedValue
+                    destinationLocation=selectedValue
                     bottomSheetDialog.dismiss() // 선택 후 바텀 시트 닫기
+
                 }
 
                 destinationButtons.forEach { button ->
@@ -169,14 +204,14 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
 
             }"meetingTime" -> {
-                bottomSheetView = layoutInflater.inflate(R.layout.list_meeting_time, null)
-                val timePicker = bottomSheetView.findViewById<TimePicker>(R.id.timePicker)
-                timePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
-                    val selectedTime = String.format("%02d:%02d", hourOfDay, minute)
-                    binding.textViewMeetingTime.text = selectedTime
-                    Toast.makeText(baseContext, "${selectedTime}", Toast.LENGTH_SHORT).show()
-                }
+            bottomSheetView = layoutInflater.inflate(R.layout.list_meeting_time, null)
+            val timePicker = bottomSheetView.findViewById<TimePicker>(R.id.timePicker)
+            timePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
+                val selectedTime = String.format("%02d:%02d", hourOfDay, minute)
+                binding.textViewMeetingTime.text = selectedTime
+                Toast.makeText(baseContext, "${selectedTime}", Toast.LENGTH_SHORT).show()
             }
+        }
 
             else -> {
                 // 기본적인 처리나 예외 처리를 수행합니다.
@@ -205,7 +240,7 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
             "context" to binding.textViewContext.text.toString(),
             "taxiOrWalk" to binding.textViewTaxiOrWalk.text.toString(),
 
-        )
+            )
 
         MyApplication.db.collection("notices")
             .add(data)
@@ -251,4 +286,5 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onLowMemory()
         mapView.onLowMemory()
     }
+
 }

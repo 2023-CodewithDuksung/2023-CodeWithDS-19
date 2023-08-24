@@ -48,7 +48,7 @@
         android:id="@+id/btnDestination7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="기숙사" />
+        android:text="덕성여대 기숙사" />
     <Button
         android:id="@+id/btnDestination8"
         android:layout_width="match_parent"

@@ -97,7 +97,7 @@
         android:src="@drawable/departure_icon" />
     <Button
         android:id="@+id/textViewDeparture"
-        android:layout_width="323dp"
+        android:layout_width="280dp"
         android:layout_height="40dp"
         android:background="@drawable/edit_box"
         android:text="출발지" />
@@ -114,7 +114,7 @@
             <Button
                 android:id="@+id/textViewDestination"
                 android:text="도착지"
-                android:layout_width="323dp"
+                android:layout_width="280dp"
                 android:layout_height="40dp"
                 android:background="@drawable/edit_box"/>
         </LinearLayout>
@@ -164,21 +164,22 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_marginHorizontal="20dp">
+
     <EditText
         android:id="@+id/textViewContext"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="40dp"
 
+        android:background="@drawable/edit_box"
         android:hint="내용을 입력하세요. \n최소 인원은 2명, 최대 인원은 4명입니다.\n글 수정이 불가하니 확인 후 글 작성 부탁드립니다."
         android:inputType="text"
-        android:background="@drawable/edit_box"
-        android:textSize="12dp"/>
+        android:textSize="12dp" />
 </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/saveBtn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_gravity="right|bottom"
             android:layout_margin="10dp"
             android:elevation="6dp"
