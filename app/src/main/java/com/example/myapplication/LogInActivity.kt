@@ -3,11 +3,16 @@ package com.example.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.myapplication.databinding.ActivityAuthBinding
 import com.example.myapplication.databinding.ActivityLogInBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.GoogleAuthProvider
 
 class LogInActivity : AppCompatActivity() {
     lateinit var binding: ActivityLogInBinding
@@ -96,6 +101,44 @@ class LogInActivity : AppCompatActivity() {
                 Toast.makeText(baseContext, "@duksung.ac.kr 도메인 이메일만 회원가입 가능합니다.", Toast.LENGTH_LONG).show()
             }
         }
+
+//        val requestLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+//            val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+//            // ApiException : Google Play 서비스 호출이 실패했을 때 태스크에서 반환할 예외
+//            try{
+//                val account = task.getResult(ApiException::class.java) // account에 대한 정보를 따로 받음
+//                val credential = GoogleAuthProvider.getCredential(account.idToken, null) // 인증 되었는지 확인
+//                MyApplication.auth.signInWithCredential(credential)
+//                    .addOnCompleteListener(this){ task ->
+//                        if(task.isSuccessful){
+//                            MyApplication.email = account.email
+//                            // changeVisibility("login")
+//                            Log.d("ToyProject", "GoogleSingIn - Successful")
+//                            finish()
+//                        }
+//                        else {
+//                            changeVisibility("logout")
+//                            Log.d("ToyProject", "GoogleSingIn - NOT Successful")
+//                        }
+//                    }
+//            } catch (e: ApiException){
+//                changeVisibility("logout")
+//                Log.d("ToyProject", "GoogleSingIn - ${e.message}")
+//            }
+//        }
+//        binding.googleLoginBtn.setOnClickListener {
+//            //구글 로그인....................
+//            val gso : GoogleSignInOptions = GoogleSignInOptions
+//                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestIdToken(getString(R.string.default_web_client_id))
+//                .requestEmail()
+//                .build()
+//            val signInIntent : Intent = GoogleSignIn.getClient(this, gso).signInIntent
+//            requestLauncher.launch(signInIntent)
+//        }
+
+        // firebase연결 후 google-json파일 연결해야함
+//    }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
