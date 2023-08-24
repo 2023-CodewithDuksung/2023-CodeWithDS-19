@@ -47,6 +47,17 @@ class NoticeDetailActivity : AppCompatActivity(), OnMapReadyCallback{
         Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.ACCESS_COARSE_LOCATION
     )
+    val markerList = arrayOf(
+        listOf("덕성여대 정문", 37.652933, 127.016745),
+        listOf("덕성여대 후문", 37.652135, 127.018054),
+        listOf("가오리역", 37.641224, 127.016088),
+        listOf("4.19민주묘지역", 37.649593, 127.013746),
+        listOf("수유역", 37.637105, 127.024856),
+        listOf("쌍문역", 37.648087, 127.034662),
+        //
+        listOf("덕성여대 기숙사", 37.651852, 127.017337),
+        listOf("솔밭공원역", 37.656088, 127.013252),
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,7 +96,6 @@ class NoticeDetailActivity : AppCompatActivity(), OnMapReadyCallback{
                         bundle.putString("taxiOrWalk", data.taxiOrWalk)
         * */
 
-        // ------------- API : 영화 제목, 포스터 추가해야 함 --------------
         binding.textViewHostEmail.text = intent.getStringExtra("host")
         binding.textViewTaxiOrWalk.text = intent.getStringExtra("taxiOrWalk")
         binding.textViewDeparture.text = intent.getStringExtra("departure")
@@ -110,7 +120,47 @@ class NoticeDetailActivity : AppCompatActivity(), OnMapReadyCallback{
             ActivityCompat.requestPermissions(this, PERMISSIONS, LOCATION_PERMISSTION_REQUEST_CODE)
         } else {
             naverMap.locationTrackingMode = LocationTrackingMode.Follow
+            setMarker()
         }
+    }
+    fun setMarker() {
+        val departure = intent.getStringExtra("departure")
+        val destination = intent.getStringExtra("destination")
+        Toast.makeText(baseContext, "${departure}", Toast.LENGTH_SHORT).show()
+        for(markerInfo in markerList) {
+            if (markerInfo[0].equals(departure)) {
+                val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
+                val departureMarker = Marker()
+                departureMarker.position = position
+                departureMarker.iconTintColor = ContextCompat.getColor(this, R.color.myYellow)
+                departureMarker.map = naverMap
+                departureMarker.captionText = markerInfo[0] as String
+                break // 선택한 출발지 마커만 표시하고 루프 종료
+            }
+            if (markerInfo[0].equals(destination)) {
+                val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
+                val destinationMarker = Marker()
+                destinationMarker.position = position
+                destinationMarker.iconTintColor = ContextCompat.getColor(this, R.color.myBurgundy02)
+                destinationMarker.map = naverMap
+                destinationMarker.captionText = markerInfo[0] as String
+                break // 선택한 출발지 마커만 표시하고 루프 종료
+            }
+        }
+        /*
+        * for (markerInfo in markerList) {
+                if (markerInfo[0].equals(departureLocation)) {
+                    val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
+                    val departureMarker = Marker()
+                    departureMarker.position = position
+                    departureMarker.iconTintColor = ContextCompat.getColor(this, R.color.myYellow)
+                    departureMarker.map = naverMap
+                    departureMarker.captionText = markerInfo[0] as String
+                    break // 선택한 출발지 마커만 표시하고 루프 종료
+                }
+            }
+        * */
+
     }
 
     override fun onRequestPermissionsResult(
@@ -130,5 +180,36 @@ class NoticeDetailActivity : AppCompatActivity(), OnMapReadyCallback{
         return PERMISSIONS.all {
             ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
         }
+    }
+    override fun onStart() {
+        super.onStart()
+        mapView.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mapView.onSaveInstanceState(outState)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mapView.onStop()
+    }
+
+
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
     }
 }
