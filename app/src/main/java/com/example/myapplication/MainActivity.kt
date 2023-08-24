@@ -34,12 +34,22 @@ class MainActivity : AppCompatActivity() {
         //버튼
         binding.lButton.setOnClickListener {
             switchFragment(ListFragment())
+            selectList()
+
+
         }
 
         binding.mButton.setOnClickListener {
             switchFragment(HomeFragment)
+            selectMap()
         }
         fragmentView(Fragment_1)
+        selectMap()
+
+
+
+
+
 
 
 
@@ -54,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                         val homeFragment = HomeFragment()
                         switchFragment(homeFragment)
                         showButtons()
+
                     }
                     R.id.nav2 -> {
                         val talkFragment = TalkFragment()
@@ -149,4 +160,15 @@ class MainActivity : AppCompatActivity() {
 //        transaction.addToBackStack(null) // Optional: Add the fragment to the back stack
 //        transaction.commit()
 //    }
+
+    fun selectMap(){
+        binding.lButton.setBackgroundResource(R.drawable.button_list_unselected)
+        binding.mButton.setBackgroundResource(R.drawable.button_map)
+
+    }
+
+    fun selectList(){
+        binding.mButton.setBackgroundResource(R.drawable.button_map_unselected)
+        binding.lButton.setBackgroundResource(R.drawable.button_list)
+    }
 }

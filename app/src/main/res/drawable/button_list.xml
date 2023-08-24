@@ -7,8 +7,8 @@
         android:width="1dp"
         android:color="@color/myBurgundy03" />
     <corners
-        android:bottomLeftRadius="200dp"
-        android:topLeftRadius="200dp"
-/>
+        android:bottomRightRadius="200dp"
+        android:topRightRadius="200dp"
+        />
 
 </shape>
