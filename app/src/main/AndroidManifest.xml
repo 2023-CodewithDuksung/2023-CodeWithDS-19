@@ -19,6 +19,7 @@
         <activity
             android:name=".NoticeDetailActivity"
             android:exported="false" />
+
         <activity
             android:name=".FormActivity"
             android:exported="false" />
