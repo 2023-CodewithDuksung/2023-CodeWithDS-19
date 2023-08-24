@@ -1,21 +1,13 @@
 package com.example.myapplication
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
-import android.content.Intent
 import android.os.Build
-import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.databinding.ListRecyclerviewBinding
-import com.example.myapplication.databinding.NoticeItemBinding
 import java.time.LocalDateTime
 import java.time.ZoneId
 
@@ -137,7 +129,7 @@ class ListRecyclerViewAdapter (val context: Context, val itemList: MutableList<N
 
             //택시 or 도보 이미지 변경
             if (data.taxiOrWalk == "taxi") { taxiOrWalk.setImageResource(R.drawable.by_texi) }
-            else { taxiOrWalk.setImageResource(R.drawable.by_walk) }
+            else { taxiOrWalk.setImageResource(R.drawable.by_texi) }
 
             //모집중, 모집임박, 종료 상태
             //val temp = data.recruitment!!.toInt() - data.recruited!!.toInt()

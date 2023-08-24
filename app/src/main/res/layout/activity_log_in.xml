@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".SplashActivity">
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="65dp"
-        android:layout_height="54dp"
-        android:src="@drawable/ds_university"/>
+    tools:context=".LogInActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textAlignment="center"
+        app:title="회원가입" />
 </LinearLayout>

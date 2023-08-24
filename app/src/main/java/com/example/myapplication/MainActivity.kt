@@ -40,7 +40,8 @@ class MainActivity : AppCompatActivity() {
             switchFragment(HomeFragment)
         }
         fragmentView(Fragment_1)
-        //
+
+
 
         // 하단 탭이 눌렸을 때 화면을 전환하기 위해선 이벤트 처리하기 위해 BottomNavigationView 객체 생성
         var bnv_main = findViewById(R.id.bottomNavi) as BottomNavigationView
@@ -67,15 +68,15 @@ class MainActivity : AppCompatActivity() {
         // OnNavigationItemSelectedListener를 통해 탭 아이템 선택 시 이벤트를 처리
         // navi_menu.xml 에서 설정했던 각 아이템들의 id를 통해 알맞은 프래그먼트로 변경하게 한다.
 
-                }
-
-                true
             }
-//                val homeFragment = HomeFragment()
+            true
+        }
                 switchFragment(HomeFragment)
                 selectedItemId = R.id.nav1
                 showButtons()
-            }
+                }
+//
+
         }else { // 로그인 안돼있으면 로그인 화면으로 이동
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)

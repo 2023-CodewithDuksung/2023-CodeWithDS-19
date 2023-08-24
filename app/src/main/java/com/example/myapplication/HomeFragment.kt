@@ -63,7 +63,6 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
 
         //현 위치
-
         locationSource = FusedLocationSource(this, LOCATION_PERMISSTION_REQUEST_CODE)
 
         arguments?.let {
