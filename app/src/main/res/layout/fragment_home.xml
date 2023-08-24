@@ -21,7 +21,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="20dp"
         android:background="@color/white">
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -33,7 +33,7 @@
                 android:layout_marginRight="5dp"
                 android:visibility="visible"
                 android:src="@drawable/menu_burger" />
-            <!-- flaticon https://www.flaticon.com/free-icon-font/menu-burger_3917220?term=menu&related_id=3917220 -->
+             flaticon https://www.flaticon.com/free-icon-font/menu-burger_3917220?term=menu&related_id=3917220
             <android.widget.SearchView
                 android:id="@+id/searchview"
                 android:layout_width="0dp"
@@ -42,6 +42,6 @@
                 android:queryHint="hint"
                 android:iconifiedByDefault="false"
                 android:searchIcon="@null"/>
-        </LinearLayout>
+        </LinearLayout>-->
     </androidx.cardview.widget.CardView>
 </FrameLayout>

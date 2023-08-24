@@ -7,13 +7,15 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:src="@drawable/logo_splash"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.424" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,6 +56,17 @@
             app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="덕성여대 안심귀가 서비스 \n'덕심이'입니다."
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="396dp"
+        tools:ignore="MissingConstraints"
+        android:textColor="@color/black"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

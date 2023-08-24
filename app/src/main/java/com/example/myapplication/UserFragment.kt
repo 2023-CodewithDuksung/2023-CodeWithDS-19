@@ -47,10 +47,23 @@ class UserFragment : Fragment() {
             val intent = Intent(activity, AuthActivity::class.java)
             startActivity(intent)
         }
-        //플로팅버튼
+        //로그아웃
         binding.logoutBtn.setOnClickListener {
             logout()
         }
+
+        //비상연락처
+        binding.textViewEmergency.setOnClickListener {
+            val intent = Intent(requireActivity(), ContactActivity::class.java)
+            startActivity(intent)
+        }
+
+        //로그
+        binding.textViewLog.setOnClickListener {
+            val intent = Intent(requireActivity(), LogActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.textViewUserEmail.text=MyApplication.email
         //binding.textViewEmergency.setOnCLi
         return binding.root
