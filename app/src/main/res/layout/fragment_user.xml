@@ -1,47 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserFragment"
     android:orientation="vertical">
 
-
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="20sp"
-        android:text="김덕성" />
-
-    <Button
-        android:id="@+id/proile_edit_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="프로필 편집" />
-
-    <Button
-        android:id="@+id/subnum_btn"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="비상연락망 설정" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            android:orientation="vertical"
 
-    <Button
-        android:id="@+id/log_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="로그관리" />
-    <Button
-        android:id="@+id/logout_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="로그아웃" />
+
+            >
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="70dp"
+                android:src="@drawable/user_profile"
+                />
+            <TextView
+                android:id="@+id/textViewUserEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textColor="#ffffff"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="프로필 편집"
+
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_home"/>
+                <TextView
+                    android:id="@+id/textViewEmergency"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="비상연락망 설정"
+                    android:textSize="18dp"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_home"/>
+                    <TextView
+                        android:id="@+id/textViewLog"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="안심 귀가 로그 관리"
+                        android:textSize="18dp"
+                        android:layout_gravity="center"
+                        android:padding="10dp"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_home"/>
+                        <TextView
+                            android:id="@+id/logoutBtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="로그아웃"
+                            android:textSize="18dp"
+                            android:layout_gravity="center"
+                            android:padding="10dp"
+                            />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+    </LinearLayout>
 </LinearLayout>
