@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
 
         val backExecutor: ScheduledExecutorService = Executors.newSingleThreadScheduledExecutor()
         val mainExecutor: Executor = ContextCompat.getMainExecutor(this)
