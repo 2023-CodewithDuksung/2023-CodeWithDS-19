@@ -8,7 +8,7 @@ data class NoticeModel(
     val currentDay: String? = null,
     val meetingTime : String? = null,
 
-    val recruitment: String? = null,
+    val recruitment: String? = "4",
     val recruited: String? = null,
     val host : String? = null,
     val context : String? = null,

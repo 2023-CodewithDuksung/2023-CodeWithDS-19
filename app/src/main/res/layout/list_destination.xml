@@ -44,6 +44,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="쌍문역" />
+    <Button
+        android:id="@+id/btnDestination7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="기숙사" />
 
     <!-- 추가적인 위젯들이나 레이아웃을 필요에 따라 추가합니다. -->
     <!-- 예: 라디오 버튼, 리스트뷰, 기타 입력 필드 등 -->
