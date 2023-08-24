@@ -33,7 +33,7 @@
         android:id="@+id/btnDestination4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="4.19역" />
+        android:text="4.19민주묘지역" />
     <Button
         android:id="@+id/btnDestination5"
         android:layout_width="match_parent"
@@ -49,6 +49,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="기숙사" />
+    <Button
+        android:id="@+id/btnDestination8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="솔밭공원역" />
 
     <!-- 추가적인 위젯들이나 레이아웃을 필요에 따라 추가합니다. -->
     <!-- 예: 라디오 버튼, 리스트뷰, 기타 입력 필드 등 -->

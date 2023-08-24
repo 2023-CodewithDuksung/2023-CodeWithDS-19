@@ -36,9 +36,12 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
         listOf("덕성여대 정문", 37.652933, 127.016745),
         listOf("덕성여대 후문", 37.652135, 127.018054),
         listOf("가오리역", 37.641224, 127.016088),
-        listOf("4.19역", 37.649595, 127.017725),
+        listOf("419민주묘지역", 37.649593, 127.013746),
         listOf("수유역", 37.637105, 127.024856),
         listOf("쌍문역", 37.648087, 127.034662),
+        //
+        listOf("덕성여대 기숙사", 37.651852, 127.017337),
+        listOf("솔밭공원", 37.656088, 127.013252),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,7 +126,9 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
                     bottomSheetView.findViewById<Button>(R.id.btnDeparture3),
                     bottomSheetView.findViewById<Button>(R.id.btnDeparture4),
                     bottomSheetView.findViewById<Button>(R.id.btnDeparture5),
-                    bottomSheetView.findViewById<Button>(R.id.btnDeparture6)
+                    bottomSheetView.findViewById<Button>(R.id.btnDeparture6),
+                    bottomSheetView.findViewById<Button>(R.id.btnDeparture7),
+                    bottomSheetView.findViewById<Button>(R.id.btnDeparture8)
                 )
                 val listener = View.OnClickListener { view ->
                     val selectedValue = (view as Button).text.toString()
@@ -145,7 +150,9 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
                     bottomSheetView.findViewById<Button>(R.id.btnDestination3),
                     bottomSheetView.findViewById<Button>(R.id.btnDestination4),
                     bottomSheetView.findViewById<Button>(R.id.btnDestination5),
-                    bottomSheetView.findViewById<Button>(R.id.btnDestination6)
+                    bottomSheetView.findViewById<Button>(R.id.btnDestination6),
+                    bottomSheetView.findViewById<Button>(R.id.btnDestination7),
+                    bottomSheetView.findViewById<Button>(R.id.btnDestination8)
                 )
                 val listener = View.OnClickListener { view ->
                     val selectedValue = (view as Button).text.toString()
@@ -157,26 +164,7 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
                     button.setOnClickListener(listener)
                 }
 
-            }
-            "reqruitment" -> {
-                bottomSheetView = layoutInflater.inflate(R.layout.list_recruitment, null)
-                val reqruitmentButtons = listOf(
-                    bottomSheetView.findViewById<Button>(R.id.btnRecruitment1),
-                    bottomSheetView.findViewById<Button>(R.id.btnRecruitment2),
-                    bottomSheetView.findViewById<Button>(R.id.btnRecruitment3),
-                    bottomSheetView.findViewById<Button>(R.id.btnRecruitment4),
-                )
-                val listener = View.OnClickListener { view ->
-                    val selectedValue = (view as Button).text.toString()
-                    binding.textViewRecruitment.text = selectedValue
-                    bottomSheetDialog.dismiss() // 선택 후 바텀 시트 닫기
-                }
-
-                reqruitmentButtons.forEach { button ->
-                    button.setOnClickListener(listener)
-                }
-            }
-            "meetingTime" -> {
+            }"meetingTime" -> {
                 bottomSheetView = layoutInflater.inflate(R.layout.list_meeting_time, null)
                 val timePicker = bottomSheetView.findViewById<TimePicker>(R.id.timePicker)
                 timePicker.setOnTimeChangedListener { _, hourOfDay, minute ->

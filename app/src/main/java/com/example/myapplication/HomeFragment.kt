@@ -54,9 +54,12 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         listOf("덕성여대 정문", 37.652933, 127.016745),
         listOf("덕성여대 후문", 37.652135, 127.018054),
         listOf("가오리역", 37.641224, 127.016088),
-        listOf("4.19역", 37.649595, 127.017725),
+        listOf("419민주묘지역", 37.649593, 127.013746),
         listOf("수유역", 37.637105, 127.024856),
         listOf("쌍문역", 37.648087, 127.034662),
+        //
+        listOf("덕성여대 기숙사", 37.651852, 127.017337),
+        listOf("솔밭공원", 37.656088, 127.013252),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
