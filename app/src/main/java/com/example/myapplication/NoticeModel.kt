@@ -8,16 +8,15 @@ data class NoticeModel(
     val currentDay: String? = null,
     val meetingTime : String? = null,
 
-    val recruitment: String? = "4",
-    val recruited: String? = "1",
+    val recruitment: String = "4",
+    val recruited: String = "1",
     val host : String? = null,
     val context : String? = null,
     val taxiOrWalk : String? = null,
 
 //    val appliedMembers: MutableSet<String> = mutableSetOf() // 신청한 멤버들 목록
-    val user1 : String? = null,
-    val user2 : String? = null,
-    val user3 : String? = null,
+    val chatId: String? = null,
+    val usersId: ArrayList<String>? = null
 )
 
 

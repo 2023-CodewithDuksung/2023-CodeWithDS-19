@@ -79,7 +79,27 @@ class ListFragment : Fragment() {
                     //recyclerview 아이템 클릭 이벤트 처리
                     adapter.setOnItemClickListener(object: ListRecyclerViewAdapter.OnItemClickListener {
                         override fun onItemClick(v: View, position: Int) {
-                            Log.d("ToyProject", "${itemList[position].docId} 클릭")
+                            val data = itemList[position]
+
+                            Log.d("ToyProject", "${data.docId} 클릭")
+
+                            val intent = Intent(requireContext(), NoticeDetailActivity::class.java)
+
+                            intent.putExtra("host", data.host)
+                            intent.putExtra("title", data.title)
+                            intent.putExtra("departure", data.departure)
+                            intent.putExtra("destination", data.destination)
+                            intent.putExtra("currentDay", data.currentDay)
+                            intent.putExtra("meetingTime", data.meetingTime)
+                            intent.putExtra("recruitment", data.recruitment)
+                            intent.putExtra("recruited", data.recruited)
+                            intent.putExtra("context", data.context)
+                            intent.putExtra("taxiOrWalk", data.taxiOrWalk)
+
+                            intent.putExtra("myDocId", itemList[position].docId)
+                            intent.putExtra("myChatId", itemList[position].chatId)
+
+                            startActivity(intent)
                         }
                     })
                 }

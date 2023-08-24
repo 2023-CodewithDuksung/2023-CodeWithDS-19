@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.example.myapplication.MyApplication.Companion.auth
 import com.example.myapplication.databinding.ActivityFormBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.naver.maps.geometry.LatLng
@@ -32,6 +33,9 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
     private val LOCATION_PERMISSTION_REQUEST_CODE: Int = 1000
     private lateinit var locationSource: FusedLocationSource // 위치를 반환하는 구현체
 
+    lateinit var mAuth: FirebaseAuth
+    lateinit var myEmail: String
+
     val markerList = arrayOf(
         listOf("덕성여대 정문", 37.652933, 127.016745),
         listOf("덕성여대 후문", 37.652135, 127.018054),
@@ -45,7 +49,7 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding =ActivityFormBinding.inflate(layoutInflater)
+        binding = ActivityFormBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         // view binding을 사용하여 레이아웃 파일 설정
 
@@ -71,6 +75,9 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
         mapView = binding.navermap
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
+
+        mAuth = FirebaseAuth.getInstance()
+        myEmail = mAuth.currentUser!!.email!!
 
         binding.saveBtn.setOnClickListener {
             if(MyApplication.checkAuth()){ // 예외처리
@@ -182,9 +189,6 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
                 // 기본적인 처리나 예외 처리를 수행합니다.
             }
         }
-
-
-
         bottomSheetDialog.setContentView(bottomSheetView)
         bottomSheetDialog.show()
     }
@@ -194,28 +198,61 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     fun saveStore() {
-        val data = mapOf(
+        val noticeRef = MyApplication.db.collection("notices").document()
+        val talkRef = MyApplication.db.collection("Talks").document()
+
+        val users = ArrayList<String>()
+        users.add(mAuth.currentUser!!.uid)
+
+        val data1 = mapOf(
+            "docId" to noticeRef.id,
+            "chatId" to talkRef.id,
             "title" to binding.textViewTitle.text.toString(),
-            "host" to MyApplication.email,
+            "host" to myEmail,
             "departure" to binding.textViewDeparture.text.toString(),
             "destination" to binding.textViewDestination.text.toString(),
             "currentDay" to dateToString(Date()),
             "meetingTime" to binding.textViewMeetingTime.text.toString(),// 이거 포멧해야함
-
+            "recruited" to "1", //글 작성자
+            "recruitment" to "4", //최대인원
             "context" to binding.textViewContext.text.toString(),
             "taxiOrWalk" to binding.textViewTaxiOrWalk.text.toString(),
-
+            "usersid" to users,
         )
 
-        MyApplication.db.collection("notices")
-            .add(data)
+        val data2 = mapOf(
+            "chatId" to talkRef.id,
+            "docId" to noticeRef.id,
+            "usersId" to users,
+        )
+
+        noticeRef.set(data1)
             .addOnSuccessListener {
-                Log.d("ToyProject", "data firestore save ok")
+                talkRef.set(data2)
+                    .addOnSuccessListener {
+                        Log.d("ToyProject", "chat create successed")
+                    }
+                    .addOnFailureListener {
+                        Log.d("ToyProject", "chat create failed")
+                    }
+
 //              uploadImage(it.id)
             }
             .addOnFailureListener {
                 Log.d("ToyProject", "data firestore save error")
             }
+
+        val intent = Intent(this, NoticeDetailActivity::class.java)
+        intent.putExtra("myDocId", noticeRef.id)
+        intent.putExtra("myChatId", talkRef.id)
+        intent.putExtra("host", myEmail)
+        intent.putExtra("taxiOrWalk", binding.textViewTaxiOrWalk.text.toString())
+        intent.putExtra("departure", binding.textViewDeparture.text.toString())
+        intent.putExtra("destination", binding.textViewDestination.text.toString())
+        intent.putExtra("meetingTime", binding.textViewMeetingTime.text.toString())
+        intent.putExtra("recruited", "1") //글 작성자
+        intent.putExtra("recruitment", "4") //최대 정원
+        startActivity(intent)
     }
     override fun onStart() {
         super.onStart()

@@ -56,53 +56,6 @@ class ListRecyclerViewAdapter (val context: Context, val itemList: MutableList<N
         val data = itemList.get(position)
 
         holder.binding.run {
-//            textViewTitle.text = data.title
-//            textViewDeparture.text=data.departure
-//            textViewDestination.text=data.destination
-//            textViewTaxiOrWalk.text=data.taxiOrWalk
-//            textViewTime.text = data.currentDay
-//            textViewDeadline.text=data.meetingTime
-//            textViewRecruited.text=data.recruited.toString()
-//            textViewRecruitment.text=data.recruitment.toString()
-/*
-*     var docId: String? = null,
-    val title: String? = null,
-    val departure: String? = null,
-    val destination: String? = null,
-    val currentDay: String? = null,
-    val meetingTime : String? = null,
-
-    val recruitment: String? = "4",
-    val recruited: String? = null,
-    val host : String? = null,
-    val context : String? = null,
-    val taxiOrWalk : String? = null,
-
-//    val appliedMembers: MutableSet<String> = mutableSetOf() // 신청한 멤버들 목록
-    val user1 : String? = null,
-    val user2 : String? = null,
-    val user3 : String? = null,
-* */
-// NoticeDetailActiviety로 데이터 전달
-            place.setOnClickListener {
-                val bundle : Bundle = Bundle()
-                bundle.putString("host", data.host)
-                bundle.putString("title", data.title)
-                bundle.putString("departure", data.departure)
-                bundle.putString("destination", data.destination)
-                bundle.putString("currentDay", data.currentDay)
-                bundle.putString("meetingTime", data.meetingTime)
-                bundle.putString("recruitment", data.recruitment)
-                bundle.putString("recruited", data.recruited)
-                bundle.putString("context", data.context)
-                bundle.putString("taxiOrWalk", data.taxiOrWalk)
-
-                Intent(context, NoticeDetailActivity::class.java).apply {
-                    putExtras(bundle)
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                }.run { context.startActivity(this) }
-            }
-
             fun setDate(): String {
                 val now = LocalDateTime.now(ZoneId.of("Asia/Seoul"))
                 val temp1 = data.currentDay!!.split("-")

@@ -1,11 +1,13 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.databinding.FragmentTalkBinding
 import kotlin.collections.ArrayList
@@ -24,12 +26,12 @@ private const val ARG_PARAM2 = "param2"
 class TalkFragment : Fragment() {
 
     lateinit var binding: FragmentTalkBinding
-    lateinit var adapter: TalkAdapter
+    //lateinit var adapter: TalkRecyclerViewAdapter
 
     //lateinit var mAuth: FirebaseAuth
     //lateinit var mDbRef: DatabaseReference
 
-    lateinit var talkList: ArrayList<Talk>
+    lateinit var talkList: ArrayList<TalkModel>
 
 
 
@@ -51,14 +53,42 @@ class TalkFragment : Fragment() {
     ): View? {
         binding = FragmentTalkBinding.inflate(layoutInflater)
 
-        talkList = ArrayList()
-        adapter = TalkAdapter(requireContext(), talkList)
 
-        binding.talkfragmentRecyclerview.layoutManager = LinearLayoutManager(requireContext())
-        binding.talkfragmentRecyclerview.adapter = adapter
 
         return binding.root
     }
+
+    //화면에 보이기 직전 실행
+//    override fun onStart() {
+//        super.onStart()
+//        if(MyApplication.checkAuth()){
+//            MyApplication.db.collection("Talks")
+//                .get()
+//                .addOnSuccessListener { result ->
+//                    val itemList = mutableListOf<TalkModel>()
+//                    for(document in result){
+//                        val item = document.toObject(TalkModel::class.java)
+//                        item.chatId = document.id
+//                        itemList.add(item)
+//                    }
+//                    val adapter = ListRecyclerViewAdapter(requireContext(), itemList)
+//                    binding.noticListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+//                    binding.noticListRecyclerView.adapter = adapter
+//                    Log.d("ToyProject", "${itemList}")
+//
+//                    //recyclerview 아이템 클릭 이벤트 처리
+//                    adapter.setOnItemClickListener(object: ListRecyclerViewAdapter.OnItemClickListener {
+//                        override fun onItemClick(v: View, position: Int) {
+//                            Log.d("ToyProject", "${itemList[position].docId} 클릭")
+//                        }
+//                    })
+//                }
+//                .addOnFailureListener{
+//                    Toast.makeText(requireContext(), "데이터 획득 실패", Toast.LENGTH_SHORT).show()
+//                }
+//        }
+//
+//    }
 
     companion object {
         /**
