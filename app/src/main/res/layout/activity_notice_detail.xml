@@ -26,25 +26,53 @@
                     android:layout_weight="1"
                     android:layout_marginRight="10dp"
                     android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/textViewHostEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:text="email" />
                     <TextView
-                        android:id="@+id/textViewHostEmail"
+                        android:id="@+id/endOrIng"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:ellipsize="end"
-                        android:text="email" />
+                        android:text="모집중" />
                     <TextView
-                        android:id="@+id/place"
+                        android:id="@+id/textViewTaxiOrWalk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="taxiOrWalk" />
+
+
+
+
+                    <TextView
+                        android:id="@+id/textViewDeparture"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:ellipsize="end"
-                        android:text="덕성여자대학교 정문 -> 수유역" />
+                        android:text="출발지" />
                     <TextView
-                        android:id="@+id/date"
+                        android:id="@+id/textViewDestination"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="오늘 13:00" />
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="도착지" />
+                    <TextView
+                        android:id="@+id/textViewMeetingTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="만날시간" />
+
                 </LinearLayout>
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/taxiOrWalk"
@@ -68,18 +96,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
+
                 <TextView
-                    android:id="@+id/recruit_str"
+                    android:id="@+id/textViewRecruited"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="모집임박"/>
+                    android:text="n"/>
                 <TextView
-                    android:id="@+id/recruit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2/4"/>
+                    android:text="/"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"/>
             </LinearLayout>
+            <Button
+                android:id="@+id/btnGoChatting"
+                android:text="참여하기"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

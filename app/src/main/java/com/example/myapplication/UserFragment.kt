@@ -1,10 +1,13 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.myapplication.databinding.FragmentListBinding
+import com.example.myapplication.databinding.FragmentUserBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,9 +23,11 @@ class UserFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var binding : FragmentUserBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
@@ -35,7 +40,24 @@ class UserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_list, container, false)
+        binding = FragmentUserBinding.inflate(inflater, container, false)
+        if(MyApplication.checkAuth()==null){
+            // 프래그먼트 내에서 인증 액티비티로 인텐트 전환
+            val intent = Intent(activity, AuthActivity::class.java)
+            startActivity(intent)
+        }
+        //플로팅버튼
+        binding.btnLogout.setOnClickListener {
+            logout()
+        }
+        return binding.root
+    }
+    // 로그아웃 로직을 처리하는 메서드
+    private fun logout() {
+        val intent = Intent(requireContext(), AuthActivity::class.java)
+        startActivity(intent)
+
     }
 
     companion object {

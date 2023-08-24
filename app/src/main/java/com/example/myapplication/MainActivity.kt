@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private val HomeFragment = HomeFragment()
     private val TalkFragment = TalkFragment()
+    private val UserFragment = UserFragment()
 
     private val Fragment_1 = 1
     private val Fragment_2 = 2
@@ -39,8 +40,7 @@ class MainActivity : AppCompatActivity() {
             switchFragment(HomeFragment)
         }
         fragmentView(Fragment_1)
-
-
+        //
 
         // 하단 탭이 눌렸을 때 화면을 전환하기 위해선 이벤트 처리하기 위해 BottomNavigationView 객체 생성
         var bnv_main = findViewById(R.id.bottomNavi) as BottomNavigationView
@@ -71,6 +71,8 @@ class MainActivity : AppCompatActivity() {
 
                 true
             }
+//                val homeFragment = HomeFragment()
+                switchFragment(HomeFragment)
                 selectedItemId = R.id.nav1
                 showButtons()
             }

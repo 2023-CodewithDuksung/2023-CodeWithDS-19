@@ -70,6 +70,44 @@ class ListRecyclerViewAdapter (val context: Context, val itemList: MutableList<N
 //            textViewDeadline.text=data.meetingTime
 //            textViewRecruited.text=data.recruited.toString()
 //            textViewRecruitment.text=data.recruitment.toString()
+/*
+*     var docId: String? = null,
+    val title: String? = null,
+    val departure: String? = null,
+    val destination: String? = null,
+    val currentDay: String? = null,
+    val meetingTime : String? = null,
+
+    val recruitment: String? = "4",
+    val recruited: String? = null,
+    val host : String? = null,
+    val context : String? = null,
+    val taxiOrWalk : String? = null,
+
+//    val appliedMembers: MutableSet<String> = mutableSetOf() // 신청한 멤버들 목록
+    val user1 : String? = null,
+    val user2 : String? = null,
+    val user3 : String? = null,
+* */
+// NoticeDetailActiviety로 데이터 전달
+            place.setOnClickListener {
+                val bundle : Bundle = Bundle()
+                bundle.putString("host", data.host)
+                bundle.putString("title", data.title)
+                bundle.putString("departure", data.departure)
+                bundle.putString("destination", data.destination)
+                bundle.putString("currentDay", data.currentDay)
+                bundle.putString("meetingTime", data.meetingTime)
+                bundle.putString("recruitment", data.recruitment)
+                bundle.putString("recruited", data.recruited)
+                bundle.putString("context", data.context)
+                bundle.putString("taxiOrWalk", data.taxiOrWalk)
+
+                Intent(context, NoticeDetailActivity::class.java).apply {
+                    putExtras(bundle)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }.run { context.startActivity(this) }
+            }
 
             fun setDate(): String {
                 val now = LocalDateTime.now(ZoneId.of("Asia/Seoul"))
@@ -94,6 +132,8 @@ class ListRecyclerViewAdapter (val context: Context, val itemList: MutableList<N
 
             //날짜 변환 - 오늘, 어제, 내일, 날짜
             date.text = setDate()
+            // email
+            textViewHostEmail.text = data.host
 
             //택시 or 도보 이미지 변경
             if (data.taxiOrWalk == "taxi") { taxiOrWalk.setImageResource(R.drawable.by_texi) }
@@ -103,7 +143,7 @@ class ListRecyclerViewAdapter (val context: Context, val itemList: MutableList<N
             //val temp = data.recruitment!!.toInt() - data.recruited!!.toInt()
             val temp3 = 1
             if (temp3 == 0) { recruitStr.text = "종료" }
-            else if (temp3 == 1) { recruitStr.text = "모집임박" }
+            else if (temp3 == 1 && data.recruited!= null && Integer.parseInt(data.recruited) <4 ) { recruitStr.text = "모집임박" }
             else { recruitStr.text = "종료" }
 
             //모집인원, 모집정원

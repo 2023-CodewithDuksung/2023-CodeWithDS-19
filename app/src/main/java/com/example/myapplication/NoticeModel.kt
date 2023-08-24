@@ -9,7 +9,7 @@ data class NoticeModel(
     val meetingTime : String? = null,
 
     val recruitment: String? = "4",
-    val recruited: String? = null,
+    val recruited: String? = "1",
     val host : String? = null,
     val context : String? = null,
     val taxiOrWalk : String? = null,

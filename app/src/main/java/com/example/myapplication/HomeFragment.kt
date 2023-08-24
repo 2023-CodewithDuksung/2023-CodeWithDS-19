@@ -25,8 +25,7 @@ import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.util.FusedLocationSource
 import com.naver.maps.map.util.MarkerIcons
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment(), OnMapReadyCallback {
@@ -78,6 +77,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
 
         mapView = rootView.findViewById(R.id.map)

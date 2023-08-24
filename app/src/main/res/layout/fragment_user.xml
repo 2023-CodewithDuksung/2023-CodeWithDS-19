@@ -39,4 +39,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="신고내역관리" />
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="로그아웃" />
 </LinearLayout>
