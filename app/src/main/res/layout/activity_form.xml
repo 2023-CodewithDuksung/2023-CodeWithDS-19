@@ -101,7 +101,7 @@
         android:src="@drawable/departure_icon" />
     <Button
         android:id="@+id/textViewDeparture"
-        android:layout_width="323dp"
+        android:layout_width="270dp"
         android:layout_height="40dp"
         android:background="@drawable/edit_box"
         android:text="출발지" />
@@ -118,7 +118,7 @@
             <Button
                 android:id="@+id/textViewDestination"
                 android:text="도착지"
-                android:layout_width="323dp"
+                android:layout_width="270dp"
                 android:layout_height="40dp"
                 android:background="@drawable/edit_box"/>
         </LinearLayout>

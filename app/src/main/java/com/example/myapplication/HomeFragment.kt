@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.content.ClipData
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -120,7 +121,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     }
     fun onClick(@NonNull overlay: Overlay): Boolean {
         if (overlay is Marker) {
-            Toast.makeText(requireContext(), "${overlay.captionText}마커가 선택되었습니다.", Toast.LENGTH_LONG).show()
+
             showBottomSheet(overlay.captionText)
             return true
         }
@@ -144,9 +145,37 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
                     item.docId = document.id
                     itemList.add(item)
                 }
+                val adapter = ListRecyclerViewAdapter(requireContext(), itemList)
                 recyclerView.layoutManager = LinearLayoutManager(requireContext())
-                recyclerView.adapter = ListRecyclerViewAdapter(requireContext(), itemList)
+                recyclerView.adapter = adapter
                 Log.d("ToyProject", "${itemList}")
+
+                //recyclerview 아이템 클릭 이벤트 처리
+                adapter.setOnItemClickListener(object: ListRecyclerViewAdapter.OnItemClickListener {
+                    override fun onItemClick(v: View, position: Int) {
+                        val data = itemList[position]
+
+                        Log.d("ToyProject", "${data.docId} 클릭")
+
+                        val intent = Intent(requireContext(), NoticeDetailActivity::class.java)
+
+                        intent.putExtra("host", data.host)
+                        intent.putExtra("title", data.title)
+                        intent.putExtra("departure", data.departure)
+                        intent.putExtra("destination", data.destination)
+                        intent.putExtra("currentDay", data.currentDay)
+                        intent.putExtra("meetingTime", data.meetingTime)
+                        intent.putExtra("recruitment", data.recruitment)
+                        intent.putExtra("recruited", data.recruited)
+                        intent.putExtra("context", data.context)
+                        intent.putExtra("taxiOrWalk", data.taxiOrWalk)
+
+                        intent.putExtra("myDocId", itemList[position].docId)
+                        intent.putExtra("myChatId", itemList[position].chatId)
+
+                        startActivity(intent)
+                    }
+                })
 
 
             }
