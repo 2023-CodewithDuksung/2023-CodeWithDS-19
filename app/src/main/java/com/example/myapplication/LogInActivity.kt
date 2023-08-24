@@ -4,8 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.myapplication.databinding.ActivityAuthBinding
@@ -25,6 +27,7 @@ class LogInActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = ""
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
 
         val state = intent.getStringExtra("auth")
         //로그인
@@ -36,6 +39,7 @@ class LogInActivity : AppCompatActivity() {
         else if (state == "signup") {
             changeVisibility(state)
         }
+
 
         binding.logInBtn.setOnClickListener {
             //이메일, 비밀번호 로그인.......................
@@ -64,7 +68,9 @@ class LogInActivity : AppCompatActivity() {
                 }
         }
 
-        binding.signUpBtn.setOnClickListener {
+
+
+    binding.signUpBtn.setOnClickListener {
             //이메일,비밀번호 회원가입........................
             val email:String = binding.id.text.toString()
             val password:String = binding.password.text.toString()

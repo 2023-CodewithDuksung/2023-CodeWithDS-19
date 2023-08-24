@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="20dp"
+            android:textSize="16dp"
             android:textColor="@color/myBrown"
             android:textStyle="bold"
             android:text="로그인"/>
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:text="이메일주소를 입력해주세요.\n학교 이메일만 가능합니다."
         android:textColor="@color/myBlack"
-        android:textSize="18dp"
+        android:textSize="16dp"
         android:layout_marginTop="120dp"
         android:layout_marginHorizontal="30dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
         android:layout_marginTop="30dp"
         android:text="비밀번호를 입력해주세요."
         android:textColor="@color/myBlack"
-        android:textSize="18dp"
+        android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id" />
 
@@ -82,8 +82,10 @@
         android:layout_marginHorizontal="25dp"
         android:backgroundTint="@color/myBurgundy03"
         android:text="로그인"
+        android:textSize="16dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/round_button_b"
         app:layout_constraintStart_toStartOf="parent" />
     <Button
         android:id="@+id/signUpBtn"
@@ -94,7 +96,9 @@
         android:layout_margin="10dp"
         android:layout_marginHorizontal="25dp"
         android:backgroundTint="@color/myYellow"
+        android:background="@drawable/round_button_y"
         android:text="회원가입"
+        android:textSize="16dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -5,7 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="20dp">
+    >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/tool_img"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/select_texi" />
+        <TextView
+            android:id="@+id/textViewTaxiOrWalk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="taxiOrWalk"
+            android:textStyle="normal"
+            android:textColor="@color/myBurgundy03"
+            android:layout_marginTop="10dp"/>
+    </androidx.appcompat.widget.Toolbar>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,23 +40,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
             android:orientation="vertical" >
-            <TextView
-                android:id="@+id/textViewTaxiOrWalk"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="taxiOrWalk"
-                android:textStyle="normal"
-                android:textColor="@android:color/holo_red_light"
-                android:layout_marginTop="10dp"/>
+
 
             <EditText
                 android:id="@+id/textViewTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_box"
                 android:hint="글제목을 입력하세요"
-                android:textStyle="italic"
-                android:textSize="20dp"/>
+                android:textSize="12dp"
+                android:layout_marginBottom="4dp"
+                android:textStyle="italic" />
 
 
 
@@ -42,11 +60,12 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginRight="10dp">
+                >
 
                 <com.naver.maps.map.MapView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="4dp"
                     android:id="@+id/navermap"
                     xmlns:android="http://schemas.android.com/apk/res/android"/>
 
@@ -60,84 +79,119 @@
 
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="18dp">
 
-        <Button
-            android:id="@+id/textViewDeparture"
-            android:text="출발지"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    >
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/departure_icon" />
+    <Button
+        android:id="@+id/textViewDeparture"
+        android:layout_width="323dp"
+        android:layout_height="40dp"
+        android:background="@drawable/edit_box"
+        android:text="출발지" />
+</LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp" />
-        <Button
-            android:id="@+id/textViewDestination"
-            android:text="도착지"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/arrive_icon" />
+            <Button
+                android:id="@+id/textViewDestination"
+                android:text="도착지"
+                android:layout_width="323dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_box"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"/>
-
-        <Button
-            android:id="@+id/textViewRecruited"
-            android:text="1"
-            android:visibility="gone"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="20dp" />
-        <Button
-            android:id="@+id/textViewRecruitment"
-            android:text="4"
-            android:visibility="gone"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="20dp" />
-        <Button
-            android:id="@+id/textViewMeetingTime"
-            android:text="시간"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="110dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginBottom="4dp">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/myGray02"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="모일 시간을 설정해주세요! \n 악용을 방지하기 위해 날짜는 당일만 가능합니다. "
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="5dp"
+                android:textSize="12dp"/>
 
 
-        <EditText
-            android:id="@+id/textViewContext"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="160dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="80dp"
-            android:gravity="top|left"
-            android:hint="글내용"
-            android:inputType="text" />
 
-        <Button
+            <Button
+                android:id="@+id/textViewMeetingTime"
+                android:text="시간"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/edit_box"
+                 />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+
+                android:background="@color/myGray02"/>
+        </LinearLayout>
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="20dp">
+    <EditText
+        android:id="@+id/textViewContext"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:hint="내용을 입력하세요. \n최소 인원은 2명, 최대 인원은 4명입니다.\n글 수정이 불가하니 확인 후 글 작성 부탁드립니다."
+        android:inputType="text"
+        android:background="@drawable/edit_box"
+        android:textSize="12dp"/>
+</LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/saveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
-            android:text="Add"/>
+            android:layout_gravity="right|bottom"
+            android:layout_margin="10dp"
+            android:elevation="6dp"
+            android:backgroundTint="@color/myYellow"
+            app:srcCompat="@drawable/next"
+            app:fabSize="normal" />
 
-    </RelativeLayout>
+
+
+
+
+
+
+    </LinearLayout>
 
 </LinearLayout>

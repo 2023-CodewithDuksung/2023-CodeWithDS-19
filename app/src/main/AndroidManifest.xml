@@ -22,7 +22,8 @@
 
         <activity
             android:name=".FormActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".PostActivity"/>
         <activity
             android:name=".PostActivity"
             android:exported="false" />
@@ -48,7 +49,8 @@
             android:exported="false" />
         <activity
             android:name=".LogInActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".AuthActivity"/>
     </application>
 
 </manifest>

@@ -48,7 +48,7 @@ class UserFragment : Fragment() {
             startActivity(intent)
         }
         //플로팅버튼
-        binding.btnLogout.setOnClickListener {
+        binding.logoutBtn.setOnClickListener {
             logout()
         }
         return binding.root

@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
         backExecutor.schedule({
             mainExecutor.execute{
 
-                MyApplication.auth.signOut() //TEST CODE...
+                //MyApplication.auth.signOut() //TEST CODE...
 
                 //로그인 검사
                 if(MyApplication.checkAuth()) {

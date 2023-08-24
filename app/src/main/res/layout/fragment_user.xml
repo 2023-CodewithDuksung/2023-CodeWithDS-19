@@ -19,28 +19,27 @@
         android:text="김덕성" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/proile_edit_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-
         android:text="프로필 편집" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/subnum_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="이용기록" />
+        android:text="비상연락망 설정" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/log_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="신고내역관리" />
+        android:text="로그관리" />
     <Button
-        android:id="@+id/btnLogout"
+        android:id="@+id/logout_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

@@ -29,9 +29,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:backgroundTint="#95304C"
             android:paddingVertical="20dp"
+            android:backgroundTint="@color/myBurgundy03"
             android:text="회원가입"
+            android:textSize="16dp"
+            android:textColor="@color/white"
+            android:background="@drawable/round_button_b"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -41,13 +44,16 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:backgroundTint="#F4F2F0"
             android:paddingVertical="20dp"
-            android:text="로그인"
+            android:backgroundTint="#F4F2F0"
             android:textColor="@color/black"
+            android:text="로그인"
+            android:textSize="16dp"
+            android:background="@drawable/round_button_w"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

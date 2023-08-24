@@ -36,7 +36,7 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
         listOf("덕성여대 정문", 37.652933, 127.016745),
         listOf("덕성여대 후문", 37.652135, 127.018054),
         listOf("가오리역", 37.641224, 127.016088),
-        listOf("419민주묘지역", 37.649593, 127.013746),
+        listOf("4.19역", 37.649595, 127.017725),
         listOf("수유역", 37.637105, 127.024856),
         listOf("쌍문역", 37.648087, 127.034662),
         //
@@ -53,6 +53,12 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
         setContentView(binding.root)
         // 택시 or 도보 intent로 데이터 받아와야함
         //val taxiOrWalk : Int = intent.getStringExtra()
+
+        //toolbar
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = ""
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
 
         locationSource = FusedLocationSource(this, LOCATION_PERMISSTION_REQUEST_CODE)
 
@@ -80,9 +86,7 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.textViewDestination.setOnClickListener {
             showBottomSheet("destination")
         }
-        binding.textViewRecruitment.setOnClickListener {
-            showBottomSheet("reqruitment")
-        }
+
         binding.textViewMeetingTime.setOnClickListener {
             showBottomSheet("meetingTime")
         }
@@ -197,8 +201,7 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
             "destination" to binding.textViewDestination.text.toString(),
             "currentDay" to dateToString(Date()),
             "meetingTime" to binding.textViewMeetingTime.text.toString(),// 이거 포멧해야함
-            "recruitment" to binding.textViewRecruitment.text.toString(),
-            "recruited" to binding.textViewRecruited.text.toString(),
+
             "context" to binding.textViewContext.text.toString(),
             "taxiOrWalk" to binding.textViewTaxiOrWalk.text.toString(),
 

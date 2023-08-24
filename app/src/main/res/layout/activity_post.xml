@@ -86,6 +86,7 @@
             android:layout_gravity="right|bottom"
             android:layout_margin="25dp"
             android:elevation="6dp"
+            android:backgroundTint="@color/myYellow"
             app:srcCompat="@drawable/next"
             app:fabSize="normal" />
     </FrameLayout>

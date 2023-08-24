@@ -15,6 +15,7 @@
         app:cardCornerRadius="10dp"
         app:contentPaddingLeft="10dp"
         app:contentPaddingRight="10dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <LinearLayout
@@ -27,6 +28,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="5dp"
+
                 android:src="@drawable/menu_burger"
                 android:visibility="visible" />
             <!-- flaticon https://www.flaticon.com/free-icon-font/menu-burger_3917220?term=menu&related_id=3917220 -->
@@ -56,6 +58,7 @@
         android:layout_margin="25dp"
         android:elevation="6dp"
         app:fabSize="normal"
+        android:backgroundTint="@color/myYellow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add" />
