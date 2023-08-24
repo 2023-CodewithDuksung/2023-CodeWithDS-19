@@ -33,7 +33,7 @@ import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.util.FusedLocationSource
 
 
-class NoticeDetailActivity : AppCompatActivity(), OnMapReadyCallback{
+class NoticeDetailActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityNoticeDetailBinding
 
@@ -64,7 +64,7 @@ class NoticeDetailActivity : AppCompatActivity(), OnMapReadyCallback{
         //현 위치
 
         // view binding을 사용하여 레이아웃 파일 설정
-        binding =ActivityNoticeDetailBinding.inflate(layoutInflater)
+        binding = ActivityNoticeDetailBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
@@ -78,7 +78,6 @@ class NoticeDetailActivity : AppCompatActivity(), OnMapReadyCallback{
 
 
         locationSource = FusedLocationSource(this, LOCATION_PERMISSTION_REQUEST_CODE)
-
 
 
         /*
@@ -104,15 +103,18 @@ class NoticeDetailActivity : AppCompatActivity(), OnMapReadyCallback{
 
         binding.textViewRecruited.text = intent.getStringExtra("recruited")
         var recruitedStr = intent.getStringExtra("recruited")
-        if( recruitedStr!= null && Integer.parseInt(recruitedStr) >= 4){
-            binding.endOrIng.text="모집 완료"
+        if (recruitedStr != null && Integer.parseInt(recruitedStr) >= 4) {
+            binding.endOrIng.text = "모집 완료"
+        }
+        binding.btnGoChatting.setOnClickListener {
+
         }
 
 
     }
 
 
-     override fun onMapReady(naverMap: NaverMap) {
+    override fun onMapReady(naverMap: NaverMap) {
         this.naverMap = naverMap
         naverMap.locationSource = locationSource
 
@@ -123,12 +125,34 @@ class NoticeDetailActivity : AppCompatActivity(), OnMapReadyCallback{
             setMarker()
         }
     }
+
     fun setMarker() {
         val departure = intent.getStringExtra("departure")
         val destination = intent.getStringExtra("destination")
-        Toast.makeText(baseContext, "${departure}", Toast.LENGTH_SHORT).show()
-        for(markerInfo in markerList) {
-            if (markerInfo[0].equals(departure)) {
+
+        for (markerInfo in markerList) {
+            if (markerInfo[0] == departure) {
+                val departurePosition = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
+                val departureMarker = Marker()
+                departureMarker.position = departurePosition
+                departureMarker.iconTintColor = ContextCompat.getColor(this, R.color.myYellow)
+                departureMarker.map = naverMap
+                departureMarker.captionText = markerInfo[0] as String
+            }
+
+            if (markerInfo[0] == destination) {
+                val destinationPosition = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
+                val destinationMarker = Marker()
+                destinationMarker.position = destinationPosition
+                destinationMarker.iconTintColor = ContextCompat.getColor(this, R.color.myBurgundy02)
+                destinationMarker.map = naverMap
+                destinationMarker.captionText = markerInfo[0] as String
+            }
+        }
+
+    /*
+    * for (markerInfo in markerList) {
+            if (markerInfo[0].equals(departureLocation)) {
                 val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
                 val departureMarker = Marker()
                 departureMarker.position = position
@@ -137,29 +161,8 @@ class NoticeDetailActivity : AppCompatActivity(), OnMapReadyCallback{
                 departureMarker.captionText = markerInfo[0] as String
                 break // 선택한 출발지 마커만 표시하고 루프 종료
             }
-            if (markerInfo[0].equals(destination)) {
-                val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
-                val destinationMarker = Marker()
-                destinationMarker.position = position
-                destinationMarker.iconTintColor = ContextCompat.getColor(this, R.color.myBurgundy02)
-                destinationMarker.map = naverMap
-                destinationMarker.captionText = markerInfo[0] as String
-                break // 선택한 출발지 마커만 표시하고 루프 종료
-            }
         }
-        /*
-        * for (markerInfo in markerList) {
-                if (markerInfo[0].equals(departureLocation)) {
-                    val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
-                    val departureMarker = Marker()
-                    departureMarker.position = position
-                    departureMarker.iconTintColor = ContextCompat.getColor(this, R.color.myYellow)
-                    departureMarker.map = naverMap
-                    departureMarker.captionText = markerInfo[0] as String
-                    break // 선택한 출발지 마커만 표시하고 루프 종료
-                }
-            }
-        * */
+    * */
 
     }
 

@@ -86,11 +86,11 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         binding.textViewDeparture.setOnClickListener {
             showBottomSheet("departure")
-            setMarker()
+            //setMarker()
         }
         binding.textViewDestination.setOnClickListener {
             showBottomSheet("destination")
-            setMarker()
+            //setMarker()
         }
 
         binding.textViewMeetingTime.setOnClickListener {
@@ -169,6 +169,7 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
                     val selectedValue = (view as Button).text.toString()
                     binding.textViewDeparture.text = selectedValue
                     departureLocation = selectedValue
+                    setMarker()
                     bottomSheetDialog.dismiss() // 선택 후 바텀 시트 닫기
 
                 }
@@ -195,6 +196,7 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
                     val selectedValue = (view as Button).text.toString()
                     binding.textViewDestination.text = selectedValue
                     destinationLocation=selectedValue
+                    setMarker()
                     bottomSheetDialog.dismiss() // 선택 후 바텀 시트 닫기
 
                 }
