@@ -100,6 +100,8 @@ class NoticeDetailActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.textViewDeparture.text = intent.getStringExtra("departure")
         binding.textViewDestination.text = intent.getStringExtra("destination")
         binding.textViewMeetingTime.text = intent.getStringExtra("meetingTime")
+        binding.textViewTitle.text = intent.getStringExtra("title")
+        binding.textViewContext.text = intent.getStringExtra("context")
 
         binding.textViewRecruited.text = intent.getStringExtra("recruited")
         var recruitedStr = intent.getStringExtra("recruited")
