@@ -13,12 +13,33 @@ import com.example.myapplication.databinding.ActivityFormBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.naver.maps.geometry.LatLng
+import com.naver.maps.map.LocationTrackingMode
+import com.naver.maps.map.MapView
+import com.naver.maps.map.NaverMap
+import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.map.overlay.Marker
+import com.naver.maps.map.util.FusedLocationSource
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class FormActivity : AppCompatActivity() {
+class FormActivity : AppCompatActivity(), OnMapReadyCallback {
     lateinit var binding: ActivityFormBinding
+
+    private lateinit var mapView: MapView
+    private lateinit var naverMap: NaverMap
+    private val LOCATION_PERMISSTION_REQUEST_CODE: Int = 1000
+    private lateinit var locationSource: FusedLocationSource // 위치를 반환하는 구현체
+
+    val markerList = arrayOf(
+        listOf("덕성여대 정문", 37.652933, 127.016745),
+        listOf("덕성여대 후문", 37.652135, 127.018054),
+        listOf("가오리역", 37.641224, 127.016088),
+        listOf("4.19역", 37.649595, 127.017725),
+        listOf("수유역", 37.637105, 127.024856),
+        listOf("쌍문역", 37.648087, 127.034662),
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding =ActivityFormBinding.inflate(layoutInflater)
@@ -30,8 +51,17 @@ class FormActivity : AppCompatActivity() {
         // 택시 or 도보 intent로 데이터 받아와야함
         //val taxiOrWalk : Int = intent.getStringExtra()
 
+        locationSource = FusedLocationSource(this, LOCATION_PERMISSTION_REQUEST_CODE)
+
+
         val taxiOrWalk = intent.getStringExtra("taxiOrWalk")
         binding.textViewTaxiOrWalk.text = taxiOrWalk
+
+
+        //mapView
+        mapView = binding.navermap
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)
 
         binding.saveBtn.setOnClickListener {
             if(MyApplication.checkAuth()){ // 예외처리
@@ -54,8 +84,31 @@ class FormActivity : AppCompatActivity() {
             showBottomSheet("meetingTime")
         }
 
+
     }
 
+    override fun onMapReady(naverMap: NaverMap){
+        this.naverMap = naverMap
+
+
+        naverMap.locationSource = locationSource
+        naverMap.locationTrackingMode = LocationTrackingMode.Follow
+
+        setMarker()
+    }
+
+    fun setMarker() {
+
+        for (markerInfo in markerList) {
+            val marker = Marker()
+            val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
+            marker.position = position
+            marker.map = naverMap
+            marker.captionText = markerInfo[0] as String
+
+
+        }
+    }
 
     private fun showBottomSheet(str : String) {
         val bottomSheetDialog = BottomSheetDialog(this)
@@ -172,5 +225,39 @@ class FormActivity : AppCompatActivity() {
             .addOnFailureListener {
                 Log.d("ToyProject", "data firestore save error")
             }
+    }
+    override fun onStart() {
+        super.onStart()
+        mapView.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapView.onPause()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mapView.onSaveInstanceState(outState)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mapView.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
     }
 }

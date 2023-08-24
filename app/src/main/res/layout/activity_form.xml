@@ -37,15 +37,22 @@
                 android:textSize="20dp"/>
 
 
+
+
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginRight="10dp"
-                android:id="@+id/map"
-                android:name="com.naver.maps.map.MapFragment" >
+                android:layout_marginRight="10dp">
+
+                <com.naver.maps.map.MapView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/navermap"
+                    xmlns:android="http://schemas.android.com/apk/res/android"/>
+
+
 
             </FrameLayout>
-
 
 
 
