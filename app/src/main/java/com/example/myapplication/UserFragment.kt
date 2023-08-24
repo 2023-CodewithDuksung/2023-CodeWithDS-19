@@ -33,6 +33,7 @@ class UserFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
@@ -51,6 +52,9 @@ class UserFragment : Fragment() {
         binding.logoutBtn.setOnClickListener {
             logout()
         }
+
+
+
         return binding.root
     }
     // 로그아웃 로직을 처리하는 메서드

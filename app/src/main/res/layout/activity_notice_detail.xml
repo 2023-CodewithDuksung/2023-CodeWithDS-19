@@ -30,13 +30,14 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/detail_cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         app:cardElevation="3dp"
         app:cardUseCompatPadding="true"
         app:contentPadding="15dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="420dp"
         >
 
         <LinearLayout
@@ -153,6 +154,9 @@
                 android:id="@+id/btnGoChatting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/round_button_y"
+                android:textSize="16dp"
+                android:textColor="@color/white"
                 android:text="참여하기" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
