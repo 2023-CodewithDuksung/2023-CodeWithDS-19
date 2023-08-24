@@ -23,6 +23,18 @@ class AuthActivity : AppCompatActivity() {
         binding= ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val intent = Intent(this, LogInActivity::class.java)
+
+        binding.singUpBtn.setOnClickListener {
+            intent.putExtra("auth", "signup")
+            startActivity(intent)
+        }
+
+        binding.logInBtn.setOnClickListener {
+            intent.putExtra("auth", "login")
+            startActivity(intent)
+        }
+
 //        changeVisibility(intent.getStringExtra("data").toString())
 
 //        if(MyApplication.checkAuth()){
