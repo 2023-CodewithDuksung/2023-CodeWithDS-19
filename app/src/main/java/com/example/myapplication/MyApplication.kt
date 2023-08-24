@@ -10,7 +10,7 @@ class MyApplication : MultiDexApplication() {
         lateinit var auth: FirebaseAuth
         var email: String? = null
 
-
+        //로그인 상태
         fun checkAuth(): Boolean {
             var currentuser = auth.currentUser
             return currentuser?.let {
