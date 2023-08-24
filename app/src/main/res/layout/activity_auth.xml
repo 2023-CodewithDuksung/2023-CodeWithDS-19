@@ -18,36 +18,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_margin="10dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/singUpBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingVertical="20dp"
             android:layout_margin="5dp"
+            android:layout_weight="1"
             android:backgroundTint="#95304C"
+            android:paddingVertical="20dp"
             android:text="회원가입"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+            android:id="@+id/logInBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingVertical="20dp"
             android:layout_margin="5dp"
+            android:layout_weight="1"
             android:backgroundTint="#F4F2F0"
-            android:textColor="@color/black"
+            android:paddingVertical="20dp"
             android:text="로그인"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
