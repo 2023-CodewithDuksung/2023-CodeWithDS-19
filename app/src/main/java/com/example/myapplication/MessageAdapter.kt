@@ -49,42 +49,22 @@ class MessageAdapter(val context: Context, val itemList: ArrayList<MessageModel>
         //보내는 데이터
         if(holder.javaClass == SendViewHolder::class.java) {
             val binding = (holder as SendViewHolder).binding
+
+            binding.date.text = data.date
+            binding.dateBox.visibility = View.GONE
+            binding.time.text = data.time
+            binding.time.visibility = View.VISIBLE
             binding.sendTxt.text = data.message
+
         } else { //받는 데이터
             val binding = (holder as ReceiveViewHolder).binding
 
-            val data_pre = itemList.get(position-1)
-            val temp = data.time.split(":")[1].toInt() - data_pre.time.split(":")[1].toInt()
-
-            val param: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-
-            if (data.date != data_pre.date) {
-                binding.date.text = data.date
-                binding.dateBox.visibility = View.VISIBLE
-            } else {
-                binding.dateBox.visibility = View.GONE
-            }
-
-            if (data.chatId == data_pre.chatId && data.date == data_pre.date && temp < 10) {
-                binding.time.text = data.time
-
-                binding.userImg.visibility = View.VISIBLE
-                binding.userName.visibility = View.VISIBLE
-                binding.time.visibility = View.VISIBLE
-
-                param.leftMargin = 0
-                binding.receiveTxt.layoutParams = param
-            } else {
-                binding.userImg.visibility = View.GONE
-                binding.userName.visibility = View.GONE
-                binding.time.visibility = View.GONE
-
-                param.leftMargin = 50
-                binding.receiveTxt.layoutParams = param
-            }
+            binding.date.text = data.date
+            binding.dateBox.visibility = View.GONE
+            binding.time.text = data.time
+            binding.userImg.visibility = View.VISIBLE
+            binding.userName.visibility = View.VISIBLE
+            binding.time.visibility = View.VISIBLE
             binding.receiveTxt.text = data.message
         }
     }

@@ -91,8 +91,6 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         return rootView
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -106,9 +104,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         naverMap.locationTrackingMode = LocationTrackingMode.Follow
 
         setMarker()
-
     }
-
 
     fun setMarker() {
 
@@ -130,7 +126,6 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         }
         return false
     }
-
 
     private fun showBottomSheet(departure: String) {
         val bottomSheetDialog = BottomSheetDialog(requireContext())
@@ -162,11 +157,6 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         bottomSheetDialog.setContentView(bottomSheetView)
         bottomSheetDialog.show()
     }
-
-
-
-
-
 
     //test
     fun getFirebaseList() {
