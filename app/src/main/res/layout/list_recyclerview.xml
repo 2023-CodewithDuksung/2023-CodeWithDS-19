@@ -27,17 +27,20 @@
                     android:layout_marginRight="10dp"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/place"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:text="덕성여자대학교 정문 -> 수유역" />
                     <TextView
+                        android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="13:00" />
+                        android:text="오늘 13:00" />
                 </LinearLayout>
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/taxiOrWalk"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/test"/>
@@ -54,20 +57,18 @@
                     android:layout_weight="1"
                     android:orientation="horizontal">
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/users"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginRight="10dp"
-                        />
                 </LinearLayout>
                 <TextView
+                    android:id="@+id/recruit_str"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
                     android:text="모집임박"/>
                 <TextView
+                    android:id="@+id/recruit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2/4"/>

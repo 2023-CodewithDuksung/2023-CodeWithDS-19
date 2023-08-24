@@ -3,6 +3,7 @@ package com.example.myapplication
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,18 +43,13 @@ class TalkFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentTalkBinding.inflate(layoutInflater)
-
 
         talkList = ArrayList()
         adapter = TalkAdapter(requireContext(), talkList)
@@ -61,10 +57,7 @@ class TalkFragment : Fragment() {
         binding.talkfragmentRecyclerview.layoutManager = LinearLayoutManager(requireContext())
         binding.talkfragmentRecyclerview.adapter = adapter
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_talk, container, false)
-
-
+        return binding.root
     }
 
     companion object {
