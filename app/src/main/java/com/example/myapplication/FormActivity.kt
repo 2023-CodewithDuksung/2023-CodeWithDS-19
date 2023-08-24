@@ -8,6 +8,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.TimePicker
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.example.myapplication.MyApplication.Companion.auth
 import com.example.myapplication.databinding.ActivityFormBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -36,20 +39,24 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
     lateinit var mAuth: FirebaseAuth
     lateinit var myEmail: String
 
+    //지도 마커
+    private  var departureLocation : String =""
+    private  var destinationLocation : String =""
+
     val markerList = arrayOf(
         listOf("덕성여대 정문", 37.652933, 127.016745),
         listOf("덕성여대 후문", 37.652135, 127.018054),
         listOf("가오리역", 37.641224, 127.016088),
-        listOf("4.19역", 37.649595, 127.017725),
+        listOf("4.19민주묘지역", 37.649593, 127.013746),
         listOf("수유역", 37.637105, 127.024856),
         listOf("쌍문역", 37.648087, 127.034662),
         //
         listOf("덕성여대 기숙사", 37.651852, 127.017337),
-        listOf("솔밭공원", 37.656088, 127.013252),
+        listOf("솔밭공원역", 37.656088, 127.013252),
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityFormBinding.inflate(layoutInflater)
+        binding =ActivityFormBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         // view binding을 사용하여 레이아웃 파일 설정
 
@@ -108,19 +115,42 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
         naverMap.locationSource = locationSource
         naverMap.locationTrackingMode = LocationTrackingMode.Follow
 
-        setMarker()
+//        setMarker()
+
     }
 
     fun setMarker() {
-
-        for (markerInfo in markerList) {
-            val marker = Marker()
-            val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
-            marker.position = position
-            marker.map = naverMap
-            marker.captionText = markerInfo[0] as String
+        // 이전에 표시한 마커들 삭제
 
 
+        // 선택한 출발지 마커 표시
+        if (departureLocation != "") {
+            for (markerInfo in markerList) {
+                if (markerInfo[0].equals(departureLocation)) {
+                    val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
+                    val departureMarker = Marker()
+                    departureMarker.position = position
+                    departureMarker.iconTintColor = ContextCompat.getColor(this, R.color.myYellow)
+                    departureMarker.map = naverMap
+                    departureMarker.captionText = markerInfo[0] as String
+                    break // 선택한 출발지 마커만 표시하고 루프 종료
+                }
+            }
+        }
+
+        // 선택한 목적지 마커 표시
+        if (destinationLocation != "") {
+            for (markerInfo in markerList) {
+                if (markerInfo[0].equals(destinationLocation)) {
+                    val position = LatLng(markerInfo[1] as Double, markerInfo[2] as Double)
+                    val destinationMarker = Marker()
+                    destinationMarker.position = position
+                    destinationMarker.iconTintColor = ContextCompat.getColor(this, R.color.myBurgundy03)
+                    destinationMarker.map = naverMap
+                    destinationMarker.captionText = markerInfo[0] as String
+                    break // 선택한 목적지 마커만 표시하고 루프 종료
+                }
+            }
         }
     }
 
@@ -144,7 +174,10 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
                 val listener = View.OnClickListener { view ->
                     val selectedValue = (view as Button).text.toString()
                     binding.textViewDeparture.text = selectedValue
+                    departureLocation = selectedValue
+                    setMarker()
                     bottomSheetDialog.dismiss() // 선택 후 바텀 시트 닫기
+
                 }
 
                 departureButtons.forEach { button ->
@@ -168,7 +201,10 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
                 val listener = View.OnClickListener { view ->
                     val selectedValue = (view as Button).text.toString()
                     binding.textViewDestination.text = selectedValue
+                    destinationLocation=selectedValue
+                    setMarker()
                     bottomSheetDialog.dismiss() // 선택 후 바텀 시트 닫기
+
                 }
 
                 destinationButtons.forEach { button ->
@@ -176,19 +212,22 @@ class FormActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
 
             }"meetingTime" -> {
-                bottomSheetView = layoutInflater.inflate(R.layout.list_meeting_time, null)
-                val timePicker = bottomSheetView.findViewById<TimePicker>(R.id.timePicker)
-                timePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
-                    val selectedTime = String.format("%02d:%02d", hourOfDay, minute)
-                    binding.textViewMeetingTime.text = selectedTime
-                    Toast.makeText(baseContext, "${selectedTime}", Toast.LENGTH_SHORT).show()
-                }
+            bottomSheetView = layoutInflater.inflate(R.layout.list_meeting_time, null)
+            val timePicker = bottomSheetView.findViewById<TimePicker>(R.id.timePicker)
+            timePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
+                val selectedTime = String.format("%02d:%02d", hourOfDay, minute)
+                binding.textViewMeetingTime.text = selectedTime
+                Toast.makeText(baseContext, "${selectedTime}", Toast.LENGTH_SHORT).show()
             }
+        }
 
             else -> {
                 // 기본적인 처리나 예외 처리를 수행합니다.
             }
         }
+
+
+
         bottomSheetDialog.setContentView(bottomSheetView)
         bottomSheetDialog.show()
     }

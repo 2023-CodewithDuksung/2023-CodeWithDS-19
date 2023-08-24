@@ -15,46 +15,67 @@
 
     <!-- 버튼을 눌렀을 때 처리할 내용 추가 -->
     <Button
+        android:background="@drawable/round_button_b2"
         android:id="@+id/btnDeparture1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+
         android:text="덕성여대 정문" />
     <Button
+        android:background="@drawable/round_button_b2"
         android:id="@+id/btnDeparture2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:text="덕성여대 후문" />
 
     <Button
+        android:background="@drawable/round_button_b2"
         android:id="@+id/btnDeparture3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:text="가오리역" />
     <Button
+        android:background="@drawable/round_button_b2"
         android:id="@+id/btnDeparture4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:text="4.19민주묘지역" />
     <Button
+        android:background="@drawable/round_button_b2"
         android:id="@+id/btnDeparture5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:text="수유역" />
     <Button
+        android:background="@drawable/round_button_b2"
         android:id="@+id/btnDeparture6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:text="쌍문역" />
     <Button
+        android:background="@drawable/round_button_b2"
         android:id="@+id/btnDeparture7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
         android:text="덕성여대 기숙사" />
     <Button
+        android:background="@drawable/round_button_b2"
         android:id="@+id/btnDeparture8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="솔밭공원역" />
+    <Button
+        android:id="@+id/btnDeparture9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="장소 추가 ＋" />
 
     <!-- 추가적인 위젯들이나 레이아웃을 필요에 따라 추가합니다. -->
     <!-- 예: 라디오 버튼, 리스트뷰, 기타 입력 필드 등 -->

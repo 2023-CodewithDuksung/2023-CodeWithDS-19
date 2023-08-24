@@ -51,6 +51,8 @@ class UserFragment : Fragment() {
         binding.logoutBtn.setOnClickListener {
             logout()
         }
+        binding.textViewUserEmail.text=MyApplication.email
+        //binding.textViewEmergency.setOnCLi
         return binding.root
     }
     // 로그아웃 로직을 처리하는 메서드

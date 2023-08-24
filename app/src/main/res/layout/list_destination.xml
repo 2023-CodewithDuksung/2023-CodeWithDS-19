@@ -15,41 +15,57 @@
 
     <!-- 버튼을 눌렀을 때 처리할 내용 추가 -->
     <Button
+        android:background="@drawable/round_button_b2"
+        android:layout_marginBottom="2dp"
         android:id="@+id/btnDestination1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="덕성여대 정문" />
     <Button
+        android:background="@drawable/round_button_b2"
+        android:layout_marginBottom="2dp"
         android:id="@+id/btnDestination2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="덕성여대 후문" />
     <Button
+        android:background="@drawable/round_button_b2"
+        android:layout_marginBottom="2dp"
         android:id="@+id/btnDestination3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="가오리역" />
     <Button
+        android:background="@drawable/round_button_b2"
+        android:layout_marginBottom="2dp"
         android:id="@+id/btnDestination4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="4.19민주묘지역" />
     <Button
+        android:background="@drawable/round_button_b2"
+        android:layout_marginBottom="2dp"
         android:id="@+id/btnDestination5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="수유역" />
     <Button
+        android:background="@drawable/round_button_b2"
+        android:layout_marginBottom="2dp"
         android:id="@+id/btnDestination6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="쌍문역" />
     <Button
+        android:background="@drawable/round_button_b2"
+        android:layout_marginBottom="2dp"
         android:id="@+id/btnDestination7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="기숙사" />
+        android:text="덕성여대 기숙사" />
     <Button
+        android:background="@drawable/round_button_b2"
+        android:layout_marginBottom="2dp"
         android:id="@+id/btnDestination8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
